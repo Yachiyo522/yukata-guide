@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>浴衣着付けガイド 13言語</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<link id="scriptFont" rel="stylesheet" href="">
+<style>
+/* Layout: indigo seigaiha header band → language chips → tabs (checklist / numbered steps / tips), single column ≤ 760px */
+:root{
+  --bg:#f5f6fa; --surface:#ffffff; --ink:#1a2140; --muted:#5b6382; --line:#dde1ee;
+  --ai:#24397f; --ai-soft:#e6eaf7; --on-ai:#f3f5fc; --beni:#b3313a; --beni-soft:#fbeced; --ok:#2f7a55;
+  --f-display:"Shippori Mincho B1","Noto Serif JP",serif;
+  --f-body:var(--f-script, "Noto Sans JP"),"Noto Sans JP",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1322; --surface:#161d33; --ink:#e6e9f5; --muted:#9aa2c0; --line:#283152;
+  --ai:#8ea6ff; --ai-soft:#1f2a4d; --on-ai:#0e1322; --beni:#ff8c93; --beni-soft:#3a1d24; --ok:#6fd3a0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1322; --surface:#161d33; --ink:#e6e9f5; --muted:#9aa2c0; --line:#283152;
+  --ai:#8ea6ff; --ai-soft:#1f2a4d; --on-ai:#0e1322; --beni:#ff8c93; --beni-soft:#3a1d24; --ok:#6fd3a0; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7}
+.band{background-color:#1f3274;color:#f3f5fc;
+  background-image:
+   radial-gradient(circle at 100% 150%, #1f3274 24%, #2c4390 25%, #2c4390 28%, #1f3274 29%, #1f3274 36%, #2c4390 36%, #2c4390 40%, transparent 40%, transparent),
+   radial-gradient(circle at 0 150%, #1f3274 24%, #2c4390 25%, #2c4390 28%, #1f3274 29%, #1f3274 36%, #2c4390 36%, #2c4390 40%, transparent 40%, transparent),
+   radial-gradient(circle at 50% 100%, #2c4390 10%, #1f3274 11%, #1f3274 23%, #2c4390 24%, #2c4390 30%, #1f3274 31%, #1f3274 43%, #2c4390 44%, #2c4390 50%, #1f3274 51%, #1f3274 63%, #2c4390 64%, #2c4390 71%, transparent 71%, transparent);
+  background-size:56px 28px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px}
+header .wrap{padding-block:28px 22px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin:0}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,6vw,40px);line-height:1.25;margin:.2em 0 .25em;text-wrap:balance}
+:root[data-script] h1{font-family:var(--f-body);font-weight:700}
+.sub{margin:0;opacity:.9;max-width:60ch}
+.ja-under{display:block;font-size:.82em;opacity:.75;font-family:"Noto Sans JP",sans-serif;font-weight:400}
+.langbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.langbar .wrap{padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.langs{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:inherit;font-size:14px;line-height:1.2;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ai);color:var(--on-ai);border-color:var(--ai)}
+.chip{padding:6px 12px 7px;border-radius:12px}
+.chip ruby{ruby-position:over;ruby-align:center;line-height:1.1}
+.chip rt{ruby-align:center;white-space:nowrap}
+.chip rt{font-family:"Noto Sans JP",sans-serif;font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.02em;padding-bottom:2px}
+.chip[aria-pressed="true"] rt{color:var(--on-ai);opacity:.85}
+.chip:focus-visible,.tab:focus-visible,.item:focus-within{outline:2px solid var(--ai);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.tabs{display:flex;gap:4px;background:var(--ai-soft);padding:4px;border-radius:10px}
+.tab{font:inherit;font-size:14px;font-weight:500;border:0;background:transparent;color:var(--ink);padding:6px 14px;border-radius:7px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--surface);color:var(--ai);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.toggle{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+main .wrap{padding-block:22px 48px}
+h2{font-size:20px;margin:0 0 4px;text-wrap:balance}
+.hint{color:var(--muted);font-size:14px;margin:0 0 14px}
+.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.item{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:14px 16px;border-top:1px solid var(--line);align-items:start}
+.item:first-child{border-top:0}
+.item>div{min-width:0}
+.item .name{font-weight:700;margin-top:4px}
+.item .desc{margin:2px 0 0;color:var(--muted);font-size:15px}
+.fig{width:112px;aspect-ratio:1;max-width:100%;border-radius:12px;background:linear-gradient(180deg,#f4f6fa,#e6eaf2);border:1px solid var(--line);padding:4px;overflow:hidden}
+.fig.tall{aspect-ratio:3/4}
+.fig svg{width:100%;height:100%;display:block}
+.fig .f{fill:var(--ai-soft);stroke:var(--ai);stroke-width:2;stroke-linejoin:round}
+.fig .s{fill:none;stroke:var(--ai);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fig .h{fill:var(--beni-soft);stroke:var(--beni);stroke-width:2;stroke-linejoin:round}
+.fig .a{fill:none;stroke:var(--beni);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fig .t{fill:var(--ai);fill-opacity:.25;stroke:none}
+.fig .d{stroke-dasharray:4 4}
+.fig .w{stroke-width:5}
+.fig .g{fill:none;stroke:var(--muted);stroke-width:1.5;stroke-linecap:round}
+.mk{fill:var(--beni)}
+.tipcards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tipcards li{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:center}
+.tipcards li>div{min-width:0}
+.tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.04em;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-inline-start:6px;vertical-align:2px}
+.note{margin:14px 0 0;padding:12px 14px;border-radius:10px;background:var(--ai-soft);font-size:15px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.step{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:start}
+.figwrap{position:relative}
+.num{position:absolute;top:-6px;inset-inline-start:-6px;width:28px;height:28px;border-radius:50%;background:var(--ai);color:var(--on-ai);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px;font-variant-numeric:tabular-nums}
+.step>div{min-width:0;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.step:last-child>div{border-bottom:0}
+.step h3{margin:6px 0 2px;font-size:17px}
+.step p{margin:0}
+.warn{margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--beni-soft);color:var(--ink);border-inline-start:3px solid var(--beni);font-size:15px}
+.warn b{color:var(--beni)}
+.tips{margin:0;padding-inline-start:1.2em;display:flex;flex-direction:column;gap:10px}
+.ja{display:block;margin-top:4px;font-size:13px;color:var(--muted);font-family:"Noto Sans JP",sans-serif}
+.ja[hidden]{display:none}
+footer{color:var(--muted);font-size:12px;text-align:center;padding-block:0 32px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="band">
+  <div class="wrap">
+    <p class="eyebrow">YUKATA · 浴衣 · 13 LANGUAGES</p>
+    <h1 id="title"></h1>
+    <p class="sub" id="subtitle"></p>
+  </div>
+</header>
+
+<div class="langbar">
+  <div class="wrap">
+    <div class="langs" id="langs" role="group" aria-label="Language"></div>
+    <div class="row">
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab" role="tab" id="tab-items" data-tab="items"></button>
+        <button class="tab" role="tab" id="tab-steps" data-tab="steps"></button>
+        <button class="tab" role="tab" id="tab-tips" data-tab="tips"></button>
+      </div>
+      <label class="toggle" id="jaToggleWrap"><input type="checkbox" id="jaToggle"> 日本語を併記</label>
+    </div>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#d6283a"/></marker>
+    <filter id="blur" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <radialGradient id="gSkin" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#f8e0cf"/><stop offset="1" stop-color="#e6bb9e"/></radialGradient>
+    <linearGradient id="gSkinL" x1="0" x2="1"><stop offset="0" stop-color="#e2b496"/><stop offset=".45" stop-color="#f6dccb"/><stop offset="1" stop-color="#ddb090"/></linearGradient>
+    <radialGradient id="gHair" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#3b302d"/><stop offset="1" stop-color="#141010"/></radialGradient>
+    <linearGradient id="gWood" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ecd2a6"/><stop offset="1" stop-color="#c9985e"/></linearGradient>
+    <linearGradient id="gWoodSide" x1="0" x2="1"><stop offset="0" stop-color="#a87443"/><stop offset="1" stop-color="#8a5a31"/></linearGradient>
+    <linearGradient id="gShadeH" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".34"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".72" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></linearGradient>
+    <linearGradient id="gShadeV" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient>
+    <linearGradient id="gShine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".22"/></linearGradient>
+    <linearGradient id="gObi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e65a5c"/><stop offset=".5" stop-color="#cf343c"/><stop offset="1" stop-color="#9f222b"/></linearGradient>
+    <linearGradient id="gObiWing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0706f"/><stop offset="1" stop-color="#b0262f"/></linearGradient>
+    <linearGradient id="gCloth" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e4e1da"/></linearGradient>
+    <linearGradient id="gPink" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7b9cb"/><stop offset="1" stop-color="#df7f9c"/></linearGradient>
+    <linearGradient id="gStair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3cfab"/><stop offset="1" stop-color="#c5a77a"/></linearGradient>
+    <pattern id="pYukata" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect width="22" height="22" fill="#20316f"/>
+      <g fill="#f4f6fb"><circle cx="6" cy="3.4" r="2"/><circle cx="8.6" cy="5.3" r="2"/><circle cx="7.6" cy="8.3" r="2"/><circle cx="4.4" cy="8.3" r="2"/><circle cx="3.4" cy="5.3" r="2"/></g>
+      <circle cx="6" cy="6" r="1.3" fill="#8ea5e2"/>
+      <ellipse cx="16" cy="15" rx="3.6" ry="1.6" fill="#5f78c0" transform="rotate(-35 16 15)"/>
+      <path d="M12 12 Q15 18 20 19" stroke="#5f78c0" stroke-width=".7" fill="none"/>
+      <g fill="#c9d4f2" opacity=".85"><circle cx="17" cy="5" r="1.1"/><circle cx="18.3" cy="6" r="1.1"/><circle cx="17.8" cy="7.4" r="1.1"/><circle cx="16.2" cy="7.4" r="1.1"/><circle cx="15.7" cy="6" r="1.1"/></g>
+      <circle cx="5" cy="17" r=".8" fill="#8ea5e2"/>
+    </pattern>
+    <pattern id="pHakata" width="9" height="10" patternUnits="userSpaceOnUse">
+      <rect width="9" height="10" fill="#5c4596"/>
+      <rect x="1" width="1.4" height="10" fill="#efe6c9"/><rect x="4" width="2.2" height="10" fill="#efe6c9" opacity=".85"/><rect x="7.4" width=".7" height="10" fill="#efe6c9"/>
+      <path d="M0 5 L9 5" stroke="#3e2d70" stroke-width=".5"/>
+    </pattern>
+    <pattern id="pTerry" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="4" fill="#fbfaf6"/><circle cx="1" cy="1" r=".7" fill="#e6e2d8"/><circle cx="3" cy="3" r=".7" fill="#ebe7de"/></pattern>
+    <pattern id="pMesh" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#e3dbf1"/><path d="M0 0 L5 5 M5 0 L0 5" stroke="#b5a5d8" stroke-width=".6"/></pattern>
+    <pattern id="pChirimen" width="14" height="14" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="#e48ea8"/>
+      <g fill="#fff3f6"><circle cx="4" cy="2.6" r="1.2"/><circle cx="5.5" cy="3.7" r="1.2"/><circle cx="5" cy="5.4" r="1.2"/><circle cx="3" cy="5.4" r="1.2"/><circle cx="2.5" cy="3.7" r="1.2"/></g>
+      <circle cx="4" cy="4.2" r=".7" fill="#f0c04a"/>
+      <circle cx="11" cy="11" r="1" fill="#f7c6d4"/>
+    </pattern>
+  </defs>
+</svg>
+<main id="main">
+  <div class="wrap" id="content"></div>
+</main>
+<footer>浴衣着付けガイド · 着付けの一般的な手順です</footer>
+
+<script>
+const DATA = {"ja": {"langName": "日本語", "dir": "ltr", "ui": {"appTitle": "浴衣の着付けガイド", "subtitle": "浴衣を着るために必要なものと、着方の手順", "tabItems": "必要なもの", "tabSteps": "着方", "tabTips": "コツ", "itemsHeading": "必要なもの（女性の場合）", "optional": "任意", "menNote": "男性は浴衣・肌着・腰紐1本・角帯（または兵児帯）・下駄があれば着られます。", "stepsHeading": "着方の流れ（女性）", "stepLabel": "手順", "tipsHeading": "着崩れしないコツ", "checklistHint": "タップして準備できたものにチェック", "ready": "準備完了", "language": "言語"}, "items": [{"id": "yukata", "name": "浴衣", "desc": "本体です。身長に合ったサイズを選びます。", "optional": false}, {"id": "underwear", "name": "和装下着（肌着）", "desc": "汗を吸い、透けを防ぎます。キャミソールとステテコで代用できます。", "optional": false}, {"id": "koshihimo", "name": "腰紐（2本）", "desc": "1本目はおはしょりを作るとき腰骨の上に、2本目は胸下で衿元を固定するのに使います。", "optional": false}, {"id": "datejime", "name": "伊達締め（1本）", "desc": "胸下の腰紐の上に巻いて、衿元とおはしょりを平らに押さえます。", "optional": false}, {"id": "korin", "name": "コーリンベルト", "desc": "衿の左右をゴムで留め、衿元の崩れを防ぎます。", "optional": true}, {"id": "obi", "name": "帯（半幅帯 または 兵児帯）", "desc": "半幅帯は文庫結びなどが定番です。兵児帯は柔らかく、初心者でも結びやすいです。作り帯なら巻いて差し込むだけで済みます。", "optional": false}, {"id": "obiita", "name": "帯板", "desc": "帯の前側に入れて、しわを防ぎシャキッと見せます。", "optional": false}, {"id": "geta", "name": "下駄", "desc": "素足で履くのが基本です。", "optional": false}, {"id": "bag", "name": "巾着・かごバッグ", "desc": "小物入れに使います。", "optional": true}], "steps": [{"title": "肌着を着る", "desc": "和装下着（またはキャミソールとステテコ）を着ます。"}, {"title": "浴衣を羽織る", "desc": "背中心を体の中心に合わせ、裾を床すれすれ（くるぶしが隠れる程度）の長さにします。"}, {"title": "裾を合わせる", "desc": "下前（右側）を先に合わせ、その上に上前（左側）を重ねます。裾先は少し上げると歩きやすくなります。", "warn": "必ず「右前（自分から見て左側の身頃が上）」にします。前から見ると小文字の「y」の形です。逆の「左前」は死装束の着方なので注意してください。"}, {"title": "腰紐①を結ぶ", "desc": "腰骨の少し上で締めます。ここが一番しっかり締める場所です。"}, {"title": "おはしょりを整える", "desc": "身八つ口（脇の開き）から手を入れて、余った布を下ろし、まっすぐに整えます。"}, {"title": "衿を合わせる", "desc": "衿元はのど元のくぼみが見える程度のV字に。後ろは衣紋（えもん）を拳ひとつ分ほど抜くときれいです。"}, {"title": "腰紐②と伊達締めを巻く", "desc": "胸下で固定し、背中のしわを脇へ寄せます。"}, {"title": "帯を結ぶ", "desc": "帯板を入れて帯を結び、結び目を背中へ回します。回すときは右回り（衿の合わせが崩れない方向）にします。"}], "tips": ["歩くときは歩幅を小さくし、内股気味に歩きます。", "衿元が崩れたら、おはしょりの下から下前の衿先を引くと直ります。", "階段では裾を少しつまみ上げると、踏んだり汚したりしにくくなります。"]}, "en": {"langName": "English", "dir": "ltr", "ui": {"appTitle": "Yukata Dressing Guide", "subtitle": "What you need to wear a yukata, and how to put it on step by step", "tabItems": "What you need", "tabSteps": "How to wear", "tabTips": "Tips", "itemsHeading": "What you need (women)", "optional": "Optional", "menNote": "Men only need a yukata, underwear, one koshihimo (thin waist tie), a kaku obi (stiff narrow men's sash) or heko obi (soft, scarf-like sash), and geta (wooden sandals).", "stepsHeading": "Dressing steps (women)", "stepLabel": "Step", "tipsHeading": "Tips to keep your yukata neat", "checklistHint": "Tap each item to check it off once it's ready", "ready": "All set!", "language": "Language"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "The garment itself. Choose a size that matches your height.", "optional": false}, {"id": "underwear", "name": "Hadagi – kimono underwear", "desc": "Absorbs sweat and stops the yukata from being see-through. A camisole and light shorts or leggings work fine as a substitute.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo – waist ties (×2)", "desc": "Koshihimo (thin waist ties): the first is tied just above the hip bones when forming the ohashori (the folded-over tuck of fabric at the waist); the second goes under the bust to hold the collar in place.", "optional": false}, {"id": "datejime", "name": "Datejime – wide under-sash (×1)", "desc": "Datejime (a wide, flat under-sash) is wrapped over the second koshihimo under the bust to keep the collar and the ohashori (folded tuck at the waist) smooth and flat.", "optional": false}, {"id": "korin", "name": "Korin belt – collar clip band", "desc": "A korin belt (an elastic band with clips at both ends) clips the left and right sides of the collar together so the neckline doesn't come loose.", "optional": true}, {"id": "obi", "name": "Obi – sash (han-haba obi or heko obi)", "desc": "A han-haba obi (half-width sash) is classically tied in a bunko knot (a bow-shaped knot) or similar. A heko obi (scarf-like sash) is soft and easy to tie, even for beginners. A tsukuri obi (pre-tied sash) just wraps around and tucks in.", "optional": false}, {"id": "obiita", "name": "Obi-ita – sash board", "desc": "Obi-ita (a thin stiffening board) goes inside the front of the obi to prevent wrinkles and keep it looking crisp.", "optional": false}, {"id": "geta", "name": "Geta – wooden sandals", "desc": "Geta (traditional wooden sandals) are normally worn barefoot.", "optional": false}, {"id": "bag", "name": "Kinchaku pouch or basket bag", "desc": "Kinchaku (a drawstring pouch) or a basket bag holds your small belongings.", "optional": true}], "steps": [{"title": "Put on underwear", "desc": "Put on kimono underwear (or a camisole and light shorts)."}, {"title": "Put on the yukata", "desc": "Line up the center back seam with the center of your body, and set the hem length so it just clears the floor (enough to cover your ankles)."}, {"title": "Wrap the front panels", "desc": "First bring the RIGHT panel (your right side) across your body so it lies underneath, then lay the LEFT panel (your left side) on top of it. Lifting the hem corners slightly makes walking easier.", "warn": "Always wrap LEFT OVER RIGHT: the panel on your own left side must be on top, so the overlap forms a lowercase \"y\" when someone faces you. Right over left is only used to dress the deceased for funerals, so please don't get it backwards!"}, {"title": "Tie the first koshihimo", "desc": "Tie the koshihimo (thin waist tie) just above your hip bones. This is the spot to tie most firmly."}, {"title": "Smooth out the ohashori", "desc": "Slip your hands in through the miyatsuguchi (the openings under the arms at the sides), pull the excess fabric down to form the ohashori (the folded-over tuck at the waist), and straighten it out."}, {"title": "Adjust the collar", "desc": "At the front, the eri (collar) should form a V that shows the hollow of your throat. At the back, pull the emon (back of the collar) down away from your neck by about a fist's width for an elegant look."}, {"title": "Tie the second koshihimo and the datejime", "desc": "Secure the second koshihimo (thin waist tie) and the datejime (wide under-sash) under the bust, smoothing any wrinkles on your back out toward the sides."}, {"title": "Tie the obi", "desc": "Insert the obi-ita (sash board), tie the obi (sash), then turn the knot around to your back. Turn it clockwise (to your right), the direction that won't loosen the overlap of the collar."}], "tips": ["When walking, take small steps with your toes turned slightly inward.", "If the collar loosens, reach under the ohashori (folded tuck at the waist) and gently pull down the tip of the underneath (right-side) collar to tighten it again.", "On stairs, lift the hem slightly so you don't step on it or get it dirty."]}, "fr": {"langName": "Français", "dir": "ltr", "ui": {"appTitle": "Guide pour porter le yukata", "subtitle": "Ce qu'il faut pour porter un yukata, et comment l'enfiler étape par étape", "tabItems": "Le nécessaire", "tabSteps": "Comment l'enfiler", "tabTips": "Astuces", "itemsHeading": "Le nécessaire (femmes)", "optional": "Facultatif", "menNote": "Pour les hommes, il suffit d'un yukata, de sous-vêtements, d'un koshihimo (cordon de taille fin), d'un kaku obi (ceinture étroite et rigide pour hommes) ou d'un heko obi (ceinture souple comme une écharpe), et de geta (sandales en bois).", "stepsHeading": "Étapes de l'habillage (femmes)", "stepLabel": "Étape", "tipsHeading": "Astuces pour que le yukata reste bien en place", "checklistHint": "Touchez chaque élément pour le cocher une fois prêt", "ready": "Tout est prêt !", "language": "Langue"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "Le vêtement lui-même. Choisissez une taille adaptée à votre hauteur.", "optional": false}, {"id": "underwear", "name": "Hadagi – sous-vêtement pour kimono", "desc": "Absorbe la transpiration et évite la transparence. Un caleçon long léger et un caraco (ou un débardeur) peuvent le remplacer.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo – cordons de taille (×2)", "desc": "Koshihimo (cordons de taille fins) : le premier se noue juste au-dessus des os des hanches pour former l'ohashori (le repli de tissu à la taille) ; le second se place sous la poitrine pour maintenir le col.", "optional": false}, {"id": "datejime", "name": "Datejime – sous-ceinture large (×1)", "desc": "Le datejime (sous-ceinture large et plate) s'enroule par-dessus le cordon placé sous la poitrine pour garder le col et l'ohashori (repli de tissu à la taille) bien à plat.", "optional": false}, {"id": "korin", "name": "Ceinture korin – élastique à pinces pour le col", "desc": "La ceinture korin (bande élastique munie d'une pince à chaque extrémité) relie les côtés gauche et droit du col pour éviter qu'il ne se desserre.", "optional": true}, {"id": "obi", "name": "Obi – ceinture (han-haba obi ou heko obi)", "desc": "Le han-haba obi (ceinture de demi-largeur) se noue classiquement en nœud bunko (nœud en forme de papillon) ou autre. Le heko obi (ceinture souple comme une écharpe) est doux et facile à nouer, même pour les débutants. Avec un tsukuri obi (ceinture pré-nouée), il suffit d'enrouler et de glisser le nœud.", "optional": false}, {"id": "obiita", "name": "Obi-ita – plaque de ceinture", "desc": "L'obi-ita (fine plaque rigide) se glisse dans le devant de l'obi pour éviter les plis et lui donner une belle tenue.", "optional": false}, {"id": "geta", "name": "Geta – sandales en bois", "desc": "Les geta (sandales traditionnelles en bois) se portent normalement pieds nus.", "optional": false}, {"id": "bag", "name": "Kinchaku ou sac en osier", "desc": "Le kinchaku (petite bourse à cordon) ou un sac en osier sert à ranger vos petites affaires.", "optional": true}], "steps": [{"title": "Mettre les sous-vêtements", "desc": "Enfilez le hadagi (sous-vêtement pour kimono) ou, à défaut, un caraco et un short léger."}, {"title": "Enfiler le yukata", "desc": "Alignez la couture centrale du dos avec le milieu de votre corps, et réglez la longueur pour que l'ourlet effleure le sol (il doit couvrir les chevilles)."}, {"title": "Croiser les pans", "desc": "Rabattez d'abord le pan DROIT (votre côté droit) sur le corps, en dessous, puis posez le pan GAUCHE (votre côté gauche) par-dessus. Relever légèrement les coins de l'ourlet facilite la marche.", "warn": "Toujours GAUCHE SUR DROITE : le pan de votre propre côté gauche doit être au-dessus, de sorte qu'une personne en face de vous voie un « y » minuscule. Croiser droite sur gauche est réservé à l'habillage des défunts lors des funérailles : ne vous trompez surtout pas de sens !"}, {"title": "Nouer le premier koshihimo", "desc": "Nouez le koshihimo (cordon de taille fin) juste au-dessus des os des hanches. C'est l'endroit à serrer le plus fermement."}, {"title": "Ajuster l'ohashori", "desc": "Glissez les mains par les miyatsuguchi (ouvertures sous les bras, sur les côtés), faites descendre le surplus de tissu pour former l'ohashori (repli de tissu à la taille) et lissez-le bien droit."}, {"title": "Ajuster le col", "desc": "Devant, l'eri (col) forme un V qui laisse voir le creux de la gorge. Derrière, dégagez l'emon (arrière du col) d'environ la largeur d'un poing pour un effet élégant."}, {"title": "Nouer le second koshihimo et le datejime", "desc": "Fixez le second koshihimo (cordon de taille fin) et le datejime (sous-ceinture large) sous la poitrine, en ramenant les plis du dos vers les côtés."}, {"title": "Nouer l'obi", "desc": "Glissez l'obi-ita (plaque de ceinture), nouez l'obi (ceinture), puis faites pivoter le nœud vers le dos. Tournez dans le sens des aiguilles d'une montre (vers votre droite), le sens qui ne desserre pas le croisement du col."}], "tips": ["En marchant, faites de petits pas, les pointes de pied légèrement tournées vers l'intérieur.", "Si le col se desserre, passez la main sous l'ohashori (repli de tissu à la taille) et tirez doucement vers le bas la pointe du col du pan du dessous (côté droit).", "Dans les escaliers, soulevez légèrement l'ourlet pour ne pas marcher dessus ni le salir."]}, "de": {"langName": "Deutsch", "dir": "ltr", "ui": {"appTitle": "Yukata-Anziehanleitung", "subtitle": "Was du zum Tragen eines Yukata brauchst und wie du ihn Schritt für Schritt anziehst", "tabItems": "Das brauchst du", "tabSteps": "Anziehen", "tabTips": "Tipps", "itemsHeading": "Das brauchst du (Frauen)", "optional": "Optional", "menNote": "Männer brauchen nur einen Yukata, Unterwäsche, einen Koshihimo (dünnes Taillenband), einen Kaku-Obi (schmaler, fester Herrengürtel) oder Heko-Obi (weicher, schalartiger Gürtel) und Geta (Holzsandalen).", "stepsHeading": "Ablauf beim Anziehen (Frauen)", "stepLabel": "Schritt", "tipsHeading": "Tipps, damit der Yukata gut sitzt", "checklistHint": "Tippe auf ein Teil, um es abzuhaken, sobald es bereitliegt", "ready": "Alles bereit!", "language": "Sprache"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "Das Kleidungsstück selbst. Wähle eine Größe, die zu deiner Körpergröße passt.", "optional": false}, {"id": "underwear", "name": "Hadagi – Kimono-Unterwäsche", "desc": "Nimmt Schweiß auf und verhindert, dass der Stoff durchscheint. Ein Unterhemd und leichte Shorts oder Leggings tun es auch.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo – Taillenbänder (×2)", "desc": "Koshihimo (dünne Taillenbänder): Das erste wird knapp über den Hüftknochen gebunden, wenn du das Ohashori (den umgeschlagenen Stoffeinschlag an der Taille) formst; das zweite kommt unter die Brust und hält den Kragen fest.", "optional": false}, {"id": "datejime", "name": "Datejime – breiter Untergürtel (×1)", "desc": "Der Datejime (breiter, flacher Untergürtel) wird über das Band unter der Brust gewickelt und drückt Kragen und Ohashori (Stoffeinschlag an der Taille) glatt.", "optional": false}, {"id": "korin", "name": "Korin-Gürtel – Kragenband mit Clips", "desc": "Der Korin-Gürtel (Gummiband mit Clips an beiden Enden) verbindet die linke und rechte Kragenseite, damit sich der Ausschnitt nicht verschiebt.", "optional": true}, {"id": "obi", "name": "Obi – Gürtel (Han-haba-Obi oder Heko-Obi)", "desc": "Der Han-haba-Obi (halbbreiter Gürtel) wird klassisch z. B. zum Bunko-Knoten (schleifenförmiger Knoten) gebunden. Der Heko-Obi (schalartiger Gürtel) ist weich und auch für Anfänger leicht zu binden. Ein Tsukuri-Obi (vorgebundener Gürtel) wird nur umgelegt und eingesteckt.", "optional": false}, {"id": "obiita", "name": "Obi-ita – Gürtelbrett", "desc": "Das Obi-ita (dünne Versteifungsplatte) wird vorne in den Obi gesteckt, verhindert Falten und sorgt für eine glatte, straffe Optik.", "optional": false}, {"id": "geta", "name": "Geta – Holzsandalen", "desc": "Geta (traditionelle Holzsandalen) werden normalerweise barfuß getragen.", "optional": false}, {"id": "bag", "name": "Kinchaku-Beutel oder Korbtasche", "desc": "Ein Kinchaku (Beutel mit Zugband) oder eine Korbtasche nimmt deine Kleinigkeiten auf.", "optional": true}], "steps": [{"title": "Unterwäsche anziehen", "desc": "Zieh die Hadagi (Kimono-Unterwäsche) oder ersatzweise ein Trägertop und leichte Shorts an."}, {"title": "Yukata überziehen", "desc": "Richte die hintere Mittelnaht an der Mitte deines Körpers aus und stelle die Länge so ein, dass der Saum knapp über dem Boden endet (die Knöchel sind bedeckt)."}, {"title": "Vorderteile übereinanderlegen", "desc": "Lege zuerst das RECHTE Vorderteil (deine rechte Seite) quer über den Körper, sodass es unten liegt, dann das LINKE Vorderteil (deine linke Seite) darüber. Wenn du die Saumecken etwas anhebst, läuft es sich leichter.", "warn": "Immer LINKS ÜBER RECHTS: Das Vorderteil deiner eigenen linken Seite liegt oben, sodass ein Gegenüber ein kleines „y“ sieht. Rechts über links wird nur bei der Einkleidung Verstorbener verwendet – bitte unbedingt darauf achten!"}, {"title": "Ersten Koshihimo binden", "desc": "Binde den Koshihimo (dünnes Taillenband) knapp über den Hüftknochen. Hier wird am festesten gebunden."}, {"title": "Ohashori glätten", "desc": "Greife durch die Miyatsuguchi (seitliche Öffnungen unter den Armen), zieh den überschüssigen Stoff nach unten, sodass das Ohashori (umgeschlagener Stoffeinschlag an der Taille) entsteht, und richte es gerade aus."}, {"title": "Kragen ausrichten", "desc": "Vorne bildet der Eri (Kragen) ein V, das die Kuhle am Hals zeigt. Hinten ziehst du den Emon (hinterer Kragen) etwa eine Faustbreite vom Nacken weg – das sieht besonders elegant aus."}, {"title": "Zweiten Koshihimo und Datejime binden", "desc": "Befestige den zweiten Koshihimo (dünnes Taillenband) und den Datejime (breiter Untergürtel) unter der Brust und streiche Falten am Rücken zu den Seiten hin aus."}, {"title": "Obi binden", "desc": "Steck das Obi-ita (Gürtelbrett) ein, binde den Obi (Gürtel) und dreh den Knoten dann nach hinten. Dreh ihn im Uhrzeigersinn (nach rechts) – in diese Richtung lockert sich die Kragenüberlappung nicht."}], "tips": ["Mach beim Gehen kleine Schritte und dreh die Fußspitzen leicht nach innen.", "Wenn sich der Kragen lockert, greif unter das Ohashori (Stoffeinschlag an der Taille) und zieh die Kragenspitze des unteren (rechten) Vorderteils sanft nach unten.", "Heb auf Treppen den Saum etwas an, damit du nicht darauf trittst oder ihn schmutzig machst."]}, "it": {"langName": "Italiano", "dir": "ltr", "ui": {"appTitle": "Guida per indossare lo yukata", "subtitle": "Cosa serve per indossare uno yukata e come vestirsi passo dopo passo", "tabItems": "Cosa serve", "tabSteps": "Come indossarlo", "tabTips": "Consigli", "itemsHeading": "Cosa serve (donna)", "optional": "Facoltativo", "menNote": "Agli uomini bastano yukata, biancheria intima, un koshihimo (cordoncino in vita), un kaku obi (cintura rigida maschile) o un heko obi (cintura morbida in tessuto) e i geta (sandali di legno).", "stepsHeading": "Come si indossa (donna)", "stepLabel": "Passo", "tipsHeading": "Consigli perché lo yukata resti in ordine", "checklistHint": "Tocca un elemento per segnarlo come pronto", "ready": "Tutto pronto!", "language": "Lingua"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "Il capo principale. Scegli una taglia adatta alla tua altezza.", "optional": false}, {"id": "underwear", "name": "Biancheria intima per kimono", "desc": "Assorbe il sudore ed evita le trasparenze. Puoi sostituirla con una canottiera e dei pantaloncini leggeri.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo – cordoncini in vita (×2)", "desc": "Il primo si lega appena sopra le ossa del bacino per formare l'ohashori (la piega di tessuto in eccesso in vita); il secondo si lega sotto il seno per fissare il colletto.", "optional": false}, {"id": "datejime", "name": "Datejime – fascia larga e piatta (×1)", "desc": "Si avvolge sopra il koshihimo sotto il seno per tenere piatti il colletto e l'ohashori.", "optional": false}, {"id": "korin", "name": "Cintura Korin (elastico con mollette per il colletto)", "desc": "Unisce i due lembi del colletto con un elastico ed evita che si apra.", "optional": true}, {"id": "obi", "name": "Obi – han-haba obi (cintura a mezza larghezza) o heko obi (cintura morbida)", "desc": "Con l'han-haba obi il nodo classico è il bunko (nodo a fiocco). L'heko obi è morbido e facile da annodare anche per chi inizia. Con un obi pre-annodato basta avvolgerlo e inserire il fiocco.", "optional": false}, {"id": "obiita", "name": "Obi-ita (tavoletta rigida per l'obi)", "desc": "Si inserisce nella parte anteriore dell'obi per evitare pieghe e dargli un aspetto ben teso.", "optional": false}, {"id": "geta", "name": "Geta (sandali di legno)", "desc": "Di norma si portano a piedi nudi.", "optional": false}, {"id": "bag", "name": "Kinchaku (borsetta a sacchetto) o borsa in vimini", "desc": "Per portare con sé i piccoli oggetti.", "optional": true}], "steps": [{"title": "Indossare la biancheria", "desc": "Indossa l'hadagi (biancheria per kimono) oppure una canottiera e dei pantaloncini leggeri."}, {"title": "Indossa lo yukata", "desc": "Allinea la cucitura centrale della schiena con il centro del corpo e regola l'orlo in modo che sfiori il pavimento (deve coprire le caviglie)."}, {"title": "Sovrapponi i lembi", "desc": "Porta prima il lembo destro (il tuo lato destro) verso il fianco sinistro, poi sovrapponi sopra il lembo sinistro (il tuo lato sinistro). Sollevare leggermente le punte dell'orlo rende più facile camminare.", "warn": "IMPORTANTE: il lembo SINISTRO (il lato sinistro di chi indossa) va SEMPRE SOPRA il destro. Per chi ti guarda di fronte, il bordo forma una \"y\" minuscola. Il destro sopra il sinistro si usa solo per vestire i defunti: non sbagliare!"}, {"title": "Lega il primo koshihimo", "desc": "Legalo appena sopra le ossa del bacino. È il punto da stringere di più."}, {"title": "Sistema l'ohashori (la piega in vita)", "desc": "Infila le mani nel miyatsuguchi (l'apertura sotto l'ascella), tira giù il tessuto in eccesso e stendilo in modo che resti dritto."}, {"title": "Sistema il colletto", "desc": "Davanti il colletto forma una V che lascia vedere l'incavo alla base del collo. Dietro, lascia l'emon (lo spazio tra colletto e nuca) aperto di circa un pugno: è più elegante."}, {"title": "Lega il secondo koshihimo e il datejime", "desc": "Fissali sotto il seno e spingi le pieghe della schiena verso i fianchi."}, {"title": "Annoda l'obi", "desc": "Inserisci l'obi-ita, annoda l'obi e poi ruota il nodo sulla schiena. Ruotalo in senso orario (verso la tua destra), la direzione che non apre il colletto."}], "tips": ["Cammina a piccoli passi, con le punte dei piedi leggermente rivolte verso l'interno.", "Se il colletto si allenta, tira la punta del colletto del lembo interno da sotto l'ohashori e tornerà a posto.", "Sulle scale solleva leggermente l'orlo, così non lo calpesti e non lo sporchi."]}, "es": {"langName": "Español", "dir": "ltr", "ui": {"appTitle": "Guía para ponerse un yukata", "subtitle": "Lo que necesitas para llevar un yukata y cómo ponértelo paso a paso", "tabItems": "Qué necesitas", "tabSteps": "Cómo ponérselo", "tabTips": "Consejos", "itemsHeading": "Qué necesitas (mujer)", "optional": "Opcional", "menNote": "Los hombres solo necesitan el yukata, ropa interior, un koshihimo (cordón para la cintura), un kaku obi (cinturón rígido masculino) o un heko obi (cinturón suave de tela) y geta (sandalias de madera).", "stepsHeading": "Cómo se pone (mujer)", "stepLabel": "Paso", "tipsHeading": "Consejos para que el yukata no se descoloque", "checklistHint": "Toca cada elemento para marcarlo como listo", "ready": "¡Todo listo!", "language": "Idioma"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "La prenda principal. Elige una talla adecuada a tu estatura.", "optional": false}, {"id": "underwear", "name": "Ropa interior para kimono", "desc": "Absorbe el sudor y evita transparencias. Puedes sustituirla por una camiseta de tirantes y unos pantalones cortos finos.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo – cordones para la cintura (×2)", "desc": "El primero se ata justo por encima de los huesos de la cadera para formar el ohashori (el pliegue de tela sobrante en la cintura); el segundo se ata bajo el pecho para fijar el cuello.", "optional": false}, {"id": "datejime", "name": "Datejime – faja ancha y plana (×1)", "desc": "Se enrolla sobre el koshihimo de debajo del pecho para mantener planos el cuello y el ohashori.", "optional": false}, {"id": "korin", "name": "Cinturón Korin (elástico con pinzas para el cuello)", "desc": "Une los dos lados del cuello con un elástico y evita que se abra.", "optional": true}, {"id": "obi", "name": "Obi – han-haba obi (cinturón de medio ancho) o heko obi (cinturón suave)", "desc": "Con el han-haba obi, el nudo clásico es el bunko (nudo en forma de lazo). El heko obi es suave y fácil de atar incluso para principiantes. Con un obi ya anudado basta con enrollarlo e insertar el lazo.", "optional": false}, {"id": "obiita", "name": "Obi-ita (tabla rígida para el obi)", "desc": "Se coloca en la parte delantera del obi para evitar arrugas y que se vea bien liso.", "optional": false}, {"id": "geta", "name": "Geta (sandalias de madera)", "desc": "Lo habitual es llevarlas con los pies descalzos.", "optional": false}, {"id": "bag", "name": "Kinchaku (bolsito de cordón) o bolso de mimbre", "desc": "Para llevar tus cosas pequeñas.", "optional": true}], "steps": [{"title": "Ponerse la ropa interior", "desc": "Ponte el hadagi (ropa interior para kimono) o, en su lugar, una camiseta de tirantes y unos pantalones cortos ligeros."}, {"title": "Ponte el yukata", "desc": "Alinea la costura central de la espalda con el centro del cuerpo y ajusta el bajo para que roce el suelo (que cubra los tobillos)."}, {"title": "Cruza los paneles", "desc": "Primero lleva el panel derecho (tu lado derecho) hacia tu cadera izquierda y después cruza encima el panel izquierdo (tu lado izquierdo). Subir un poco las puntas del bajo hace que sea más fácil caminar.", "warn": "IMPORTANTE: el panel IZQUIERDO (el lado izquierdo de quien lo lleva) va SIEMPRE ENCIMA del derecho. Para quien te mira de frente, el borde forma una \"y\" minúscula. El derecho sobre el izquierdo solo se usa para vestir a los difuntos, ¡ten mucho cuidado!"}, {"title": "Ata el primer koshihimo", "desc": "Átalo justo por encima de los huesos de la cadera. Es el punto que debe quedar más firme."}, {"title": "Arregla el ohashori (el pliegue de la cintura)", "desc": "Mete las manos por el miyatsuguchi (la abertura bajo la axila), baja la tela sobrante y alísala para que quede recta."}, {"title": "Ajusta el cuello", "desc": "Por delante, el cuello forma una V que deja ver el hueco de la base de la garganta. Por detrás, deja el emon (el espacio entre el cuello y la nuca) abierto más o menos un puño: queda más elegante."}, {"title": "Ata el segundo koshihimo y el datejime", "desc": "Fíjalos bajo el pecho y lleva las arrugas de la espalda hacia los costados."}, {"title": "Ata el obi", "desc": "Coloca el obi-ita, ata el obi y gira el nudo hacia la espalda. Gíralo en el sentido de las agujas del reloj (hacia tu derecha), que es la dirección que no deshace el cruce del cuello."}], "tips": ["Camina con pasos cortos y las puntas de los pies ligeramente hacia dentro.", "Si el cuello se afloja, tira de la punta del cuello del panel interior por debajo del ohashori y volverá a su sitio.", "En las escaleras, levanta un poco el bajo para no pisarlo ni mancharlo."]}, "pt": {"langName": "Português", "dir": "ltr", "ui": {"appTitle": "Guia para vestir o yukata", "subtitle": "O que você precisa para usar um yukata e como vesti-lo passo a passo", "tabItems": "O que é preciso", "tabSteps": "Como vestir", "tabTips": "Dicas", "itemsHeading": "O que é preciso (mulher)", "optional": "Opcional", "menNote": "Os homens só precisam do yukata, roupa íntima, um koshihimo (cordão para a cintura), um kaku obi (faixa rígida masculina) ou um heko obi (faixa macia de tecido) e geta (sandálias de madeira).", "stepsHeading": "Como vestir (mulher)", "stepLabel": "Passo", "tipsHeading": "Dicas para o yukata não sair do lugar", "checklistHint": "Toque em cada item para marcá-lo como pronto", "ready": "Tudo pronto!", "language": "Idioma"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "A peça principal. Escolha um tamanho adequado à sua altura.", "optional": false}, {"id": "underwear", "name": "Roupa íntima para kimono", "desc": "Absorve o suor e evita transparências. Pode ser substituída por uma regata e um short leve.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo – cordões para a cintura (×2)", "desc": "O primeiro é amarrado logo acima dos ossos do quadril para formar o ohashori (a dobra de tecido que sobra na cintura); o segundo é amarrado abaixo do busto para fixar a gola.", "optional": false}, {"id": "datejime", "name": "Datejime – faixa larga e plana (×1)", "desc": "É enrolada sobre o koshihimo abaixo do busto para manter a gola e o ohashori bem lisos.", "optional": false}, {"id": "korin", "name": "Cinto Korin (elástico com presilhas para a gola)", "desc": "Prende os dois lados da gola com um elástico e evita que ela se abra.", "optional": true}, {"id": "obi", "name": "Obi – han-haba obi (faixa de meia largura) ou heko obi (faixa macia)", "desc": "Com o han-haba obi, o nó clássico é o bunko (nó em forma de laço). O heko obi é macio e fácil de amarrar, mesmo para iniciantes. Com um obi pré-amarrado, basta enrolar e encaixar o laço.", "optional": false}, {"id": "obiita", "name": "Obi-ita (placa rígida para o obi)", "desc": "Colocada na parte da frente do obi, evita amassados e deixa tudo bem esticado.", "optional": false}, {"id": "geta", "name": "Geta (sandálias de madeira)", "desc": "O costume é usá-las com os pés descalços.", "optional": false}, {"id": "bag", "name": "Kinchaku (bolsinha de cordão) ou bolsa de palha", "desc": "Para levar seus objetos pequenos.", "optional": true}], "steps": [{"title": "Vestir a roupa íntima", "desc": "Vista o hadagi (roupa íntima para kimono) ou, como alternativa, uma regata e um short leve."}, {"title": "Vista o yukata", "desc": "Alinhe a costura central das costas com o centro do corpo e ajuste a barra para que quase toque o chão (cobrindo os tornozelos)."}, {"title": "Cruze as frentes", "desc": "Primeiro leve a frente direita (o seu lado direito) em direção ao quadril esquerdo e depois cruze por cima a frente esquerda (o seu lado esquerdo). Levantar um pouco as pontas da barra facilita o caminhar.", "warn": "IMPORTANTE: a frente ESQUERDA (o lado esquerdo de quem veste) fica SEMPRE POR CIMA da direita. Para quem olha você de frente, a borda forma um \"y\" minúsculo. Direita por cima da esquerda é usado somente para vestir os mortos, então tome muito cuidado!"}, {"title": "Amarre o primeiro koshihimo", "desc": "Amarre logo acima dos ossos do quadril. É o ponto que deve ficar mais firme."}, {"title": "Ajeite o ohashori (a dobra da cintura)", "desc": "Coloque as mãos pelo miyatsuguchi (a abertura embaixo do braço), puxe para baixo o tecido que sobra e alise para que fique reto."}, {"title": "Ajuste a gola", "desc": "Na frente, a gola forma um V que deixa ver a cavidade na base do pescoço. Atrás, deixe o emon (o espaço entre a gola e a nuca) aberto cerca de um punho: fica mais elegante."}, {"title": "Amarre o segundo koshihimo e o datejime", "desc": "Prenda-os abaixo do busto e leve os amassados das costas para as laterais."}, {"title": "Amarre o obi", "desc": "Coloque o obi-ita, amarre o obi e gire o nó para as costas. Gire no sentido horário (para a sua direita), a direção que não desfaz o cruzamento da gola."}], "tips": ["Caminhe com passos curtos e as pontas dos pés levemente voltadas para dentro.", "Se a gola afrouxar, puxe, por baixo do ohashori, a ponta da gola da frente interna (lado direito) e ela voltará ao lugar.", "Nas escadas, levante um pouco a barra para não pisar nela nem sujá-la."]}, "zh": {"langName": "中文（普通话）", "dir": "ltr", "ui": {"appTitle": "浴衣穿着指南", "subtitle": "穿浴衣需要准备的物品和穿着步骤", "tabItems": "所需物品", "tabSteps": "穿法", "tabTips": "小窍门", "itemsHeading": "所需物品（女性）", "optional": "可选", "menNote": "男性只需浴衣、贴身内衣、腰带绳1根、角带（或兵儿带）和木屐即可穿着。", "stepsHeading": "穿着流程（女性）", "stepLabel": "步骤", "tipsHeading": "防止穿乱的小窍门", "checklistHint": "点击勾选已准备好的物品", "ready": "准备完毕", "language": "语言"}, "items": [{"id": "yukata", "name": "浴衣", "desc": "主体服装。请选择适合自己身高的尺寸。", "optional": false}, {"id": "underwear", "name": "和服内衣（贴身衣）", "desc": "吸汗并防止透肉。也可以用吊带背心和及膝衬裤代替。", "optional": false}, {"id": "koshihimo", "name": "腰带绳（细腰绳，2根）", "desc": "第1根在做“御端折”（腰部折叠上提的部分）时系在胯骨上方，第2根系在胸下用来固定领口。", "optional": false}, {"id": "datejime", "name": "伊达缔（宽软腰封，1根）", "desc": "缠在胸下的腰带绳上，把领口和御端折压平整。", "optional": false}, {"id": "korin", "name": "领口固定带（Korin带）", "desc": "用松紧带夹住左右衣领，防止领口松散。", "optional": true}, {"id": "obi", "name": "腰带（半幅带 或 兵儿带）", "desc": "半幅带（窄幅腰带）常用“文库结”等打法。兵儿带质地柔软，新手也容易系。如果是成品造型带，只需缠好后插入固定即可。", "optional": false}, {"id": "obiita", "name": "带板（腰带衬板）", "desc": "插在腰带前侧，防止起皱，让腰带看起来挺括整齐。", "optional": false}, {"id": "geta", "name": "木屐", "desc": "基本上光脚穿。", "optional": false}, {"id": "bag", "name": "束口袋・竹编包", "desc": "用来装随身小物。", "optional": true}], "steps": [{"title": "穿内衣", "desc": "穿上和服内衣（也可以用吊带背心和及膝衬裤代替）。"}, {"title": "披上浴衣", "desc": "把背部中缝对准身体中线，下摆长度调到几乎贴地（刚好盖住脚踝）。"}, {"title": "对合下摆", "desc": "先把内侧衣片（右侧）贴身合好，再把外侧衣片（左侧）叠在上面。下摆尖稍微往上提一点，走路更方便。", "warn": "一定要“左压右”：穿着者自己左侧的衣片在上，盖住右侧的衣片（从正面看呈小写字母 y 形）。右压左（右侧衣片在上）是给逝者穿寿衣的方式，千万不要弄反！"}, {"title": "系第①根腰带绳", "desc": "系在胯骨稍上方。这里是需要系得最紧的地方。"}, {"title": "整理御端折", "desc": "从腋下开口（身八口）伸手进去，把多余的布往下拉，整理平直。"}, {"title": "对合衣领", "desc": "领口交叉成V字，以能看到喉咙下方的凹窝为宜。后领（衣纹）向后拉开约一拳的距离会更好看。"}, {"title": "系第②根腰带绳和伊达缔", "desc": "在胸下固定，并把背部的褶皱往两侧腋下推平。"}, {"title": "系腰带", "desc": "放入带板后系好腰带，再把结转到背后。转动时要向右转（经由自己的右侧转到背后），这样衣领的交叠才不会乱。"}], "tips": ["走路时步子要小，脚尖稍微向内。", "领口松了的话，从御端折下面拉一下内侧衣片的领尖就能恢复。", "上下楼梯时把下摆稍微提起，就不容易踩到或弄脏。"]}, "yue": {"langName": "廣東話", "dir": "ltr", "ui": {"appTitle": "浴衣着法指南", "subtitle": "着浴衣要準備嘅嘢同埋着法步驟", "tabItems": "要準備嘅嘢", "tabSteps": "着法", "tabTips": "小貼士", "itemsHeading": "要準備嘅嘢（女士）", "optional": "可選", "menNote": "男士只要有浴衣、底衫、腰繩1條、角帶（或者兵兒帶）同木屐就着得。", "stepsHeading": "着法流程（女士）", "stepLabel": "步驟", "tipsHeading": "唔易着亂嘅小貼士", "checklistHint": "㩒一下，剔低準備好咗嘅嘢", "ready": "準備好晒", "language": "語言"}, "items": [{"id": "yukata", "name": "浴衣", "desc": "主角嚟㗎。揀啱自己身高嘅尺碼。", "optional": false}, {"id": "underwear", "name": "和服內衣（底衫）", "desc": "吸汗兼防走光。用吊帶背心同中褲代替都得。", "optional": false}, {"id": "koshihimo", "name": "腰繩（幼腰繩，2條）", "desc": "第1條喺整「御端折」（腰位摺上嚟嗰截）嗰陣綁喺盤骨上面，第2條綁喺心口下面固定衫領。", "optional": false}, {"id": "datejime", "name": "伊達締（軟身闊腰封，1條）", "desc": "圍喺心口下面嗰條腰繩上面，將衫領同御端折壓到平晒。", "optional": false}, {"id": "korin", "name": "衫領固定帶（Korin帶）", "desc": "用橡筋夾住左右兩邊衫領，等領口唔會散開。", "optional": true}, {"id": "obi", "name": "腰帶（半幅帶 或 兵兒帶）", "desc": "半幅帶（窄身腰帶）通常打「文庫結」之類。兵兒帶軟身，新手都好易綁。如果係現成造型帶，圍好再插埋個結就搞掂。", "optional": false}, {"id": "obiita", "name": "帶板（腰帶襯板）", "desc": "放喺腰帶前面，防止起皺，睇落企理挺身啲。", "optional": false}, {"id": "geta", "name": "木屐", "desc": "基本上係赤腳着㗎。", "optional": false}, {"id": "bag", "name": "索繩袋・藤織手袋", "desc": "用嚟裝隨身細嘢。", "optional": true}], "steps": [{"title": "着底衫", "desc": "着上和服底衫（用吊帶背心同及膝底褲代替都得）。"}, {"title": "披上浴衣", "desc": "將背脊中間條線對準身體中線，衫腳長度調到差唔多掂地（啱啱遮住腳眼）。"}, {"title": "埋衫腳", "desc": "先埋入面嗰幅（右邊），再將外面嗰幅（左邊）疊上去。衫腳尖稍為拎高少少，行路會方便啲。", "warn": "一定要「左壓右」：着衫嗰個人自己左邊嗰幅喺上面，蓋住右邊嗰幅（喺前面睇係細楷 y 字形）。右壓左（右邊嗰幅喺上面）係畀過身嘅人着壽衣嘅着法，千祈唔好調轉！"}, {"title": "綁第①條腰繩", "desc": "綁喺盤骨上面少少。呢度係要綁得最實嘅位。"}, {"title": "整好御端折", "desc": "由腋下開口（身八口）伸手入去，將多出嚟嘅布拉落嚟，整到平平直直。"}, {"title": "埋衫領", "desc": "衫領交叉成V字，見到喉嚨下面個凹位就啱。後領（衣紋）拉後大約一個拳頭咁闊會靚啲。"}, {"title": "綁第②條腰繩同伊達締", "desc": "喺心口下面固定好，將背脊啲皺褶推去兩邊腋下。"}, {"title": "綁腰帶", "desc": "放好帶板再綁腰帶，然後將個結轉去背脊。轉嘅時候要向右轉（經自己右邊轉去後面），咁衫領交疊先唔會亂。"}], "tips": ["行路嗰陣行細步啲，腳尖稍為向入。", "衫領鬆咗嘅話，由御端折下面拉一拉入面嗰幅嘅領尖就整返好。", "上落樓梯嗰陣將衫腳拎高少少，就唔易踩到或者整污糟。"]}, "ko": {"langName": "한국어", "dir": "ltr", "ui": {"appTitle": "유카타 입는 법 가이드", "subtitle": "유카타를 입을 때 필요한 것과 입는 순서", "tabItems": "준비물", "tabSteps": "입는 법", "tabTips": "요령", "itemsHeading": "준비물(여성)", "optional": "선택", "menNote": "남성은 유카타, 속옷, 고시히모(허리끈) 1개, 가쿠오비(또는 헤코오비), 게타만 있으면 입을 수 있어요.", "stepsHeading": "입는 순서(여성)", "stepLabel": "단계", "tipsHeading": "옷매무새가 흐트러지지 않는 요령", "checklistHint": "준비된 항목을 탭해서 체크하세요", "ready": "준비 완료", "language": "언어"}, "items": [{"id": "yukata", "name": "유카타", "desc": "본체예요. 키에 맞는 사이즈를 고르세요.", "optional": false}, {"id": "underwear", "name": "기모노용 속옷(하다기)", "desc": "땀을 흡수하고 비침을 막아 줘요. 캐미솔과 반바지 속옷으로 대신해도 돼요.", "optional": false}, {"id": "koshihimo", "name": "고시히모(허리끈, 2개)", "desc": "첫 번째 끈은 오하쇼리(허리에서 접어 올린 부분)를 만들 때 골반뼈 위에, 두 번째 끈은 가슴 아래에서 깃을 고정할 때 사용해요.", "optional": false}, {"id": "datejime", "name": "다테지메(넓은 보조 허리띠, 1개)", "desc": "가슴 아래 고시히모 위에 감아서 깃과 오하쇼리를 평평하게 눌러 줘요.", "optional": false}, {"id": "korin", "name": "코린 벨트(깃 고정 밴드)", "desc": "좌우 깃을 고무 밴드로 집어서 깃이 벌어지지 않게 해 줘요.", "optional": true}, {"id": "obi", "name": "오비(한하바오비 또는 헤코오비)", "desc": "한하바오비(폭이 좁은 띠)는 분코 매듭 등이 대표적이에요. 헤코오비는 부드러워서 초보자도 매기 쉬워요. 완성형 오비(쓰쿠리오비)라면 감고 매듭을 꽂기만 하면 끝이에요.", "optional": false}, {"id": "obiita", "name": "오비이타(오비 심지판)", "desc": "오비 앞쪽에 넣어 주름을 막고 깔끔하게 보이게 해 줘요.", "optional": false}, {"id": "geta", "name": "게타(나막신)", "desc": "맨발로 신는 것이 기본이에요.", "optional": false}, {"id": "bag", "name": "긴차쿠(복주머니형 가방)・바구니 가방", "desc": "소지품을 넣을 때 사용해요.", "optional": true}], "steps": [{"title": "속옷 입기", "desc": "기모노용 속옷(또는 캐미솔과 무릎 길이 속바지)을 입어요."}, {"title": "유카타 걸치기", "desc": "등 가운데 솔기를 몸의 중심에 맞추고, 밑단 길이는 바닥에 닿을락 말락 하게(복사뼈가 가려질 정도) 맞춰요."}, {"title": "앞자락 여미기", "desc": "안쪽 자락(오른쪽)을 먼저 여미고, 그 위에 바깥 자락(왼쪽)을 겹쳐요. 자락 끝을 살짝 올려 주면 걷기 편해요.", "warn": "반드시 왼쪽 자락이 위로 오게 여미세요: 입는 사람 본인의 왼쪽 자락이 오른쪽 자락을 덮어야 해요(정면에서 보면 소문자 y 모양). 오른쪽 자락이 위로 오게 여미는 것은 고인에게 수의를 입히는 방식이니 절대 반대로 하지 마세요!"}, {"title": "첫 번째 고시히모 묶기", "desc": "골반뼈보다 조금 위에서 묶어요. 여기가 가장 단단히 조여야 하는 곳이에요."}, {"title": "오하쇼리 정리하기", "desc": "겨드랑이 트임(미야쓰구치)으로 손을 넣어 남는 천을 아래로 내리고 반듯하게 정리해요."}, {"title": "깃 여미기", "desc": "깃은 목 아래 오목한 곳이 보일 정도의 V자로 여며요. 뒷깃(에몬)은 주먹 하나 정도 띄워 빼 주면 예뻐요."}, {"title": "두 번째 고시히모와 다테지메 감기", "desc": "가슴 아래에서 고정하고, 등의 주름은 옆구리 쪽으로 밀어 정리해요."}, {"title": "오비 매기", "desc": "오비이타를 넣고 오비를 맨 다음, 매듭을 등 뒤로 돌려요. 돌릴 때는 오른쪽 방향(본인의 오른쪽을 거쳐 뒤로)으로 돌려야 깃의 여밈이 흐트러지지 않아요."}], "tips": ["걸을 때는 보폭을 좁게 하고, 발끝을 살짝 안쪽으로 향하게 걸어요.", "깃이 흐트러지면 오하쇼리 아래로 안쪽 자락의 깃 끝을 당기면 바로잡혀요.", "계단에서는 밑단을 살짝 집어 올리면 밟거나 더럽힐 일이 줄어요."]}, "th": {"langName": "ไทย", "dir": "ltr", "ui": {"appTitle": "คู่มือการสวมยูกาตะ", "subtitle": "สิ่งที่ต้องเตรียมและขั้นตอนการสวมยูกาตะ", "tabItems": "สิ่งที่ต้องเตรียม", "tabSteps": "วิธีสวม", "tabTips": "เคล็ดลับ", "itemsHeading": "สิ่งที่ต้องเตรียม (สำหรับผู้หญิง)", "optional": "ไม่บังคับ", "menNote": "ผู้ชายใช้เพียงยูกาตะ ชุดชั้นใน โคชิฮิโมะ (เชือกผูกเอว) 1 เส้น คาคุโอบิ (โอบิแข็งแบบแคบสำหรับผู้ชาย) หรือเฮโกะโอบิ (โอบิผ้านุ่ม) และเกตะ (รองเท้าเกี๊ยะไม้แบบญี่ปุ่น) ก็สวมได้แล้ว", "stepsHeading": "ขั้นตอนการสวม (ผู้หญิง)", "stepLabel": "ขั้นตอนที่", "tipsHeading": "เคล็ดลับไม่ให้ชุดหลุดลุ่ย", "checklistHint": "แตะเพื่อติ๊กของที่เตรียมพร้อมแล้ว", "ready": "พร้อมแล้ว", "language": "ภาษา"}, "items": [{"id": "yukata", "name": "ยูกาตะ", "desc": "ตัวชุดหลัก เลือกขนาดให้เหมาะกับส่วนสูงของคุณ", "optional": false}, {"id": "underwear", "name": "ชุดชั้นในสำหรับชุดญี่ปุ่น", "desc": "ช่วยซับเหงื่อและกันไม่ให้ชุดดูโปร่งแสง ใช้เสื้อสายเดี่ยวกับกางเกงขาสั้นแบบหลวมแทนได้", "optional": false}, {"id": "koshihimo", "name": "โคชิฮิโมะ (เชือกผูกเอว) 2 เส้น", "desc": "เส้นแรกผูกเหนือกระดูกสะโพกตอนทำโอฮาโชริ (ส่วนผ้าที่พับทบเหลือไว้ใต้เอว) เส้นที่สองผูกใต้อกเพื่อตรึงปกคอให้อยู่กับที่", "optional": false}, {"id": "datejime", "name": "ดาเตจิเมะ (สายรัดกว้างสำหรับตรึงชุด) 1 เส้น", "desc": "พันทับโคชิฮิโมะเส้นที่อยู่ใต้อก เพื่อกดปกคอและโอฮาโชริให้แบนเรียบ", "optional": false}, {"id": "korin", "name": "โครินเบลต์ (สายยางยืดที่มีคลิปหนีบปกคอ)", "desc": "หนีบปกคอด้านซ้ายและขวาเข้าหากันด้วยสายยางยืด ช่วยไม่ให้ปกคอเลื่อนหลุด", "optional": true}, {"id": "obi", "name": "โอบิ: ฮันฮาบะโอบิ (โอบิครึ่งหน้ากว้าง) หรือเฮโกะโอบิ (โอบิผ้านุ่ม)", "desc": "ฮันฮาบะโอบิมักผูกแบบบุงโกะ (ปมโบว์ทรงสี่เหลี่ยมแบบคลาสสิก) เฮโกะโอบิเนื้อนุ่ม มือใหม่ก็ผูกได้ง่าย ส่วนโอบิสำเร็จรูปแค่พันแล้วเสียบก็เสร็จ", "optional": false}, {"id": "obiita", "name": "โอบิอิตะ (แผ่นรองโอบิ)", "desc": "สอดไว้ด้านหน้าของโอบิเพื่อกันรอยยับและให้ดูเรียบตึง", "optional": false}, {"id": "geta", "name": "เกตะ (รองเท้าเกี๊ยะไม้แบบญี่ปุ่น)", "desc": "ตามธรรมเนียมจะสวมด้วยเท้าเปล่า", "optional": false}, {"id": "bag", "name": "ถุงหูรูดคินชากุ หรือกระเป๋าสาน", "desc": "ใช้ใส่ของใช้ชิ้นเล็กๆ", "optional": true}], "steps": [{"title": "สวมชุดชั้นใน", "desc": "สวมชุดชั้นในสำหรับกิโมโน (หรือใช้เสื้อสายเดี่ยวกับกางเกงขาสั้นบาง ๆ แทนได้)"}, {"title": "คลุมยูกาตะ", "desc": "จัดตะเข็บกลางหลังให้อยู่กึ่งกลางลำตัว และให้ชายชุดยาวเกือบแตะพื้น (พอปิดตาตุ่ม)"}, {"title": "ทาบชายชุด", "desc": "ทาบผ้าด้านขวาของผู้สวม (ชั้นล่าง) เข้าหาลำตัวก่อน แล้วจึงทาบผ้าด้านซ้าย (ชั้นบน) ทับลงไป ยกปลายชายชุดขึ้นเล็กน้อยจะเดินได้สะดวกขึ้น", "warn": "ผ้าด้านซ้ายของผู้สวมต้องอยู่ด้านบน ทับผ้าด้านขวาเสมอ (ซ้ายทับขวา มองจากด้านหน้าจะเป็นรูปตัว y พิมพ์เล็ก) การให้ด้านขวาทับด้านซ้ายเป็นวิธีแต่งกายให้ผู้เสียชีวิตเท่านั้น ห้ามสวมสลับด้านเด็ดขาด"}, {"title": "ผูกโคชิฮิโมะเส้นที่ 1", "desc": "ผูกเหนือกระดูกสะโพกเล็กน้อย จุดนี้ต้องผูกให้แน่นที่สุด"}, {"title": "จัดโอฮาโชริ", "desc": "สอดมือเข้าทางมิยัตสึกุจิ (ช่องเปิดด้านข้างใต้รักแร้ของยูกาตะ) ดึงผ้าส่วนเกินลงมาแล้วจัดให้ตรงเรียบ"}, {"title": "จัดปกคอ", "desc": "ไขว้ปกคอเป็นรูปตัว V ให้พอเห็นรอยบุ๋มที่ลำคอ ด้านหลังให้ดึงเอมง (ส่วนปกคอด้านหลังที่เผยให้เห็นต้นคอ) ลงให้ห่างจากต้นคอประมาณหนึ่งกำปั้นจะดูสวย"}, {"title": "ผูกโคชิฮิโมะเส้นที่ 2 และดาเตจิเมะ", "desc": "ตรึงไว้ใต้อก แล้วเกลี่ยรอยยับที่แผ่นหลังไปไว้ทางด้านข้าง"}, {"title": "ผูกโอบิ", "desc": "สอดโอบิอิตะ ผูกโอบิ แล้วหมุนปมไปไว้ด้านหลัง โดยหมุนไปทางขวาของผู้สวม (ทิศที่ไม่ทำให้ปกคอที่ไขว้ไว้เสียทรง)"}], "tips": ["เวลาเดินให้ก้าวสั้นๆ และให้ปลายเท้าชี้เข้าด้านในเล็กน้อย", "ถ้าปกคอหลุดลุ่ย ให้ดึงปลายปกคอของผ้าชั้นล่างจากใต้โอฮาโชริ ก็จะกลับเข้าที่", "เวลาขึ้นลงบันได ให้จับชายชุดยกขึ้นเล็กน้อย จะได้ไม่เหยียบหรือทำให้เปื้อน"]}, "vi": {"langName": "Tiếng Việt", "dir": "ltr", "ui": {"appTitle": "Hướng dẫn mặc yukata", "subtitle": "Những thứ cần chuẩn bị và các bước mặc yukata", "tabItems": "Cần chuẩn bị", "tabSteps": "Cách mặc", "tabTips": "Mẹo", "itemsHeading": "Cần chuẩn bị (dành cho nữ)", "optional": "Tùy chọn", "menNote": "Nam giới chỉ cần yukata, đồ lót, 1 sợi koshihimo (dây buộc eo), kaku obi (đai cứng bản hẹp dành cho nam) hoặc heko obi (đai vải mềm) và geta (guốc gỗ Nhật) là có thể mặc được.", "stepsHeading": "Các bước mặc (nữ)", "stepLabel": "Bước", "tipsHeading": "Mẹo giữ trang phục không bị xộc xệch", "checklistHint": "Chạm để đánh dấu những thứ đã chuẩn bị xong", "ready": "Đã sẵn sàng", "language": "Ngôn ngữ"}, "items": [{"id": "yukata", "name": "Yukata", "desc": "Trang phục chính. Hãy chọn cỡ phù hợp với chiều cao của bạn.", "optional": false}, {"id": "underwear", "name": "Đồ lót mặc trong trang phục Nhật", "desc": "Thấm mồ hôi và tránh bị lộ, xuyên thấu. Có thể thay bằng áo hai dây và quần đùi rộng.", "optional": false}, {"id": "koshihimo", "name": "Koshihimo (dây buộc eo) – 2 sợi", "desc": "Sợi thứ nhất buộc ngay trên xương hông khi tạo ohashori (phần vải thừa gấp lại ở dưới eo), sợi thứ hai buộc dưới ngực để cố định cổ áo.", "optional": false}, {"id": "datejime", "name": "Datejime (đai bản rộng để cố định) – 1 sợi", "desc": "Quấn đè lên sợi koshihimo dưới ngực để giữ cổ áo và ohashori phẳng phiu.", "optional": false}, {"id": "korin", "name": "Korin belt (dây thun có kẹp giữ cổ áo)", "desc": "Kẹp hai vạt cổ áo trái và phải bằng dây thun, giúp cổ áo không bị xô lệch.", "optional": true}, {"id": "obi", "name": "Obi (đai): han-haba obi (đai bản nửa) hoặc heko obi (đai vải mềm)", "desc": "Han-haba obi thường được thắt kiểu nút bunko (nút nơ hình hộp cổ điển). Heko obi mềm mại, người mới cũng dễ thắt. Nếu dùng obi làm sẵn thì chỉ cần quấn và gài vào là xong.", "optional": false}, {"id": "obiita", "name": "Obi-ita (tấm lót đai)", "desc": "Đặt vào mặt trước của obi để tránh nếp nhăn và giúp đai trông phẳng, gọn gàng.", "optional": false}, {"id": "geta", "name": "Geta (guốc gỗ Nhật)", "desc": "Theo truyền thống sẽ đi chân trần.", "optional": false}, {"id": "bag", "name": "Túi rút kinchaku hoặc túi cói", "desc": "Dùng để đựng đồ dùng nhỏ.", "optional": true}], "steps": [{"title": "Mặc đồ lót", "desc": "Mặc đồ lót dành cho kimono (hoặc áo hai dây và quần đùi mỏng thay thế)."}, {"title": "Khoác yukata", "desc": "Căn đường may giữa lưng trùng với giữa cơ thể, để gấu áo dài gần chạm sàn (vừa che mắt cá chân)."}, {"title": "Chồng hai vạt áo", "desc": "Áp vạt bên PHẢI của người mặc (lớp dưới) vào người trước, sau đó phủ vạt bên TRÁI (lớp trên) lên trên. Nâng nhẹ mép gấu áo lên một chút sẽ dễ đi hơn.", "warn": "Vạt TRÁI của người mặc luôn phải nằm TRÊN, đè lên vạt phải (trái đè phải; nhìn từ phía trước sẽ thấy hình chữ “y” viết thường). Mặc phải đè trái là cách mặc chỉ dành cho người đã khuất, tuyệt đối đừng mặc ngược!"}, {"title": "Buộc koshihimo thứ nhất", "desc": "Buộc ngay trên xương hông một chút. Đây là chỗ cần buộc chặt nhất."}, {"title": "Chỉnh ohashori", "desc": "Luồn tay qua miyatsuguchi (khe hở ở hai bên nách của yukata), kéo phần vải thừa xuống và vuốt cho thẳng."}, {"title": "Chỉnh cổ áo", "desc": "Bắt chéo cổ áo thành hình chữ V, vừa đủ thấy chỗ lõm ở cổ họng. Phía sau, kéo emon (phần cổ áo sau để lộ gáy) cách gáy khoảng một nắm tay sẽ rất đẹp."}, {"title": "Buộc koshihimo thứ hai và datejime", "desc": "Cố định dưới ngực, rồi vuốt các nếp nhăn ở lưng sang hai bên sườn."}, {"title": "Thắt obi", "desc": "Đặt obi-ita vào, thắt obi rồi xoay nút thắt ra sau lưng. Hãy xoay về phía bên phải của người mặc (hướng không làm xô lệch cổ áo đã bắt chéo)."}], "tips": ["Khi đi, hãy bước những bước ngắn và hơi khép mũi chân vào trong.", "Nếu cổ áo bị xộc xệch, hãy kéo đầu cổ áo của vạt dưới từ phía dưới ohashori là sẽ chỉnh lại được.", "Khi lên xuống cầu thang, hãy nhấc nhẹ gấu áo lên để không giẫm phải hoặc làm bẩn."]}, "ar": {"langName": "العربية", "dir": "rtl", "ui": {"appTitle": "دليل ارتداء اليوكاتا", "subtitle": "ما تحتاجه لارتداء اليوكاتا وخطوات ارتدائها", "tabItems": "المستلزمات", "tabSteps": "طريقة الارتداء", "tabTips": "نصائح", "itemsHeading": "المستلزمات (للنساء)", "optional": "اختياري", "menNote": "يكفي الرجال يوكاتا وملابس داخلية وكوشيهيمو واحد (حبل لربط الخصر) وكاكو أوبي (حزام رجالي ضيّق متين) أو هيكو أوبي (حزام قماشي ناعم) وغيتا (قبقاب خشبي ياباني).", "stepsHeading": "خطوات الارتداء (للنساء)", "stepLabel": "الخطوة", "tipsHeading": "نصائح للحفاظ على ترتيب اللباس", "checklistHint": "انقر لوضع علامة على ما جهّزته", "ready": "جاهز", "language": "اللغة"}, "items": [{"id": "yukata", "name": "يوكاتا", "desc": "القطعة الأساسية. اختر مقاسًا يناسب طولك.", "optional": false}, {"id": "underwear", "name": "ملابس داخلية للزي الياباني", "desc": "تمتص العرق وتمنع شفافية القماش. يمكن استبدالها بقميص داخلي بحمالات وسروال قصير واسع.", "optional": false}, {"id": "koshihimo", "name": "كوشيهيمو (حبل لربط الخصر) – عدد 2", "desc": "يُربط الأول فوق عظم الورك عند تشكيل الأوهاشوري (ثنية القماش الزائد أسفل الخصر)، ويُربط الثاني تحت الصدر لتثبيت الياقة.", "optional": false}, {"id": "datejime", "name": "داتيجيمي (حزام عريض للتثبيت) – عدد 1", "desc": "يُلفّ فوق الكوشيهيمو الموجود تحت الصدر ليُبقي الياقة والأوهاشوري مسطّحتين.", "optional": false}, {"id": "korin", "name": "حزام كورين (شريط مطاطي بمشبكين لتثبيت الياقة)", "desc": "يشبك طرفي الياقة الأيمن والأيسر بشريط مطاطي، فيمنع انزلاق الياقة.", "optional": true}, {"id": "obi", "name": "أوبي (حزام): هان-هابا أوبي (حزام بنصف العرض) أو هيكو أوبي (حزام قماشي ناعم)", "desc": "يُعقد الهان-هابا أوبي عادةً بعقدة بونكو (عقدة فيونكة كلاسيكية على شكل صندوق). أما الهيكو أوبي فهو ناعم وسهل العقد حتى للمبتدئين. وإن كان الأوبي جاهز العقدة، فيكفي لفّه وإدخاله.", "optional": false}, {"id": "obiita", "name": "أوبي-إيتا (لوح تقوية الحزام)", "desc": "يوضع في الجهة الأمامية من الأوبي ليمنع التجاعيد ويمنحه مظهرًا مشدودًا أنيقًا.", "optional": false}, {"id": "geta", "name": "غيتا (قبقاب خشبي ياباني)", "desc": "يُلبس تقليديًا بقدمين حافيتين.", "optional": false}, {"id": "bag", "name": "كيس كينتشاكو برباط أو حقيبة من الخوص", "desc": "لحمل الأغراض الصغيرة.", "optional": true}], "steps": [{"title": "ارتدِ الملابس الداخلية", "desc": "ارتدِ الملابس الداخلية الخاصة بالكيمونو (أو قميصًا داخليًا بحمّالات وسروالًا قصيرًا خفيفًا بدلًا منها)."}, {"title": "ضع اليوكاتا على كتفيك", "desc": "طابق خط الخياطة في منتصف الظهر مع منتصف جسمك، واجعل طرف اليوكاتا السفلي يكاد يلامس الأرض (بحيث يغطي الكاحلين)."}, {"title": "ضمّ طرفي اليوكاتا", "desc": "ضع أولًا الطرف الأيمن لمن يرتديها (الطبقة السفلى) على الجسم، ثم ضع الطرف الأيسر (الطبقة العليا) فوقه. رفع طرف الذيل قليلًا يجعل المشي أسهل.", "warn": "يجب أن يكون الطرف الأيسر لمن يرتديها هو الأعلى دائمًا، فوق الطرف الأيمن (الأيسر فوق الأيمن، ويبدو من الأمام على شكل الحرف اللاتيني y الصغير). وضع الأيمن فوق الأيسر طريقةٌ مخصّصة فقط لإلباس الموتى، فاحرص ألّا تعكسه أبدًا."}, {"title": "اربط الكوشيهيمو الأول", "desc": "اربطه فوق عظم الورك بقليل. هذا هو الموضع الذي يجب شدّه بإحكام أكثر من غيره."}, {"title": "رتّب الأوهاشوري", "desc": "أدخل يدك من الميياتسوغوتشي (الفتحة الجانبية تحت الإبط في اليوكاتا)، واسحب القماش الزائد إلى الأسفل وسوِّه باستقامة."}, {"title": "رتّب الياقة", "desc": "اجعل الياقة على شكل حرف V بحيث يظهر تجويف أسفل الحلق. ومن الخلف، يبدو المظهر جميلًا إذا أبعدت الإيمون (الجزء الخلفي من الياقة الذي يكشف مؤخرة العنق) عن العنق بمقدار قبضة يد تقريبًا."}, {"title": "اربط الكوشيهيمو الثاني والداتيجيمي", "desc": "ثبّتهما تحت الصدر، ثم اسحب تجاعيد الظهر نحو الجانبين."}, {"title": "اعقد الأوبي", "desc": "ضع الأوبي-إيتا، واعقد الأوبي، ثم أدر العقدة إلى الظهر. أدِرها نحو يمين من يرتديها (وهو الاتجاه الذي لا يُفسد تقاطع الياقة)."}], "tips": ["عند المشي، اخطُ خطوات قصيرة مع توجيه أطراف القدمين قليلًا إلى الداخل.", "إذا ارتخت الياقة، اسحب طرف ياقة الطبقة السفلى من تحت الأوهاشوري فتعود إلى مكانها.", "على الدرج، ارفع طرف اليوكاتا قليلًا حتى لا تدوس عليه أو يتّسخ."]}};
+const ORDER = ["ja","en","fr","de","it","es","pt","zh","yue","ko","th","vi","ar"];
+const JA_NAMES = {ja:"日本語",en:"英語",fr:"フランス語",de:"ドイツ語",it:"イタリア語",es:"スペイン語",pt:"ポルトガル語",zh:"中国語（北京語）",yue:"広東語",ko:"韓国語",th:"タイ語",vi:"ベトナム語",ar:"アラビア語"};
+const FONTS = {
+  zh:["Noto Sans SC","Noto+Sans+SC:wght@400;500;700"],
+  yue:["Noto Sans TC","Noto+Sans+TC:wght@400;500;700"],
+  ko:["Noto Sans KR","Noto+Sans+KR:wght@400;500;700"],
+  th:["Noto Sans Thai","Noto+Sans+Thai:wght@400;500;700"],
+  ar:["Noto Sans Arabic","Noto+Sans+Arabic:wght@400;500;700"],
+  vi:["Noto Sans","Noto+Sans:wght@400;500;700"]
+};
+const store = {
+  get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+let lang = (location.hash.slice(1) in DATA) ? location.hash.slice(1) : store.get("yk-lang","ja");
+if(!(lang in DATA)) lang="ja";
+let tab = store.get("yk-tab","items");
+/* ---- Illustrations: front view = as seen by someone facing the wearer. Figures 120×160, objects 120×120 ---- */
+const AR = ' marker-end="url(#ar)"';
+const RED = 'fill="none" stroke="#d6283a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"';
+const SQ = (inner)=>`<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">${inner}</svg>`;
+const TALL = (inner)=>`<svg viewBox="0 0 120 160" aria-hidden="true" focusable="false">${inner}</svg>`;
+const SHADOW = (cx,cy,rx)=>`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="3.5" fill="#1b2036" opacity=".18" filter="url(#blur)"/>`;
+const shaded = (d, fill, extra='')=>`<path d="${d}" fill="${fill}" ${extra}/><path d="${d}" fill="url(#gShadeH)"/>`;
+
+/* figure parts */
+const P = {
+  body:  "M45 41 Q60 38 75 41 L79 47 Q81 100 82 149 Q60 152 38 149 Q39 100 41 47 Z",
+  slvL:  "M45 41 Q36 43 31 50 Q27 62 27 98 Q35 101 43 99 L42 60 Z",
+  slvR:  "M75 41 Q84 43 89 50 Q93 62 93 98 Q85 101 77 99 L78 60 Z",
+  top:   "M65 38 Q63 50 60 61 Q54 105 49 149 Q65 151 82 149 Q81 100 79 47 L75 41 Z",
+  neckV: "M55 38 L60.5 61 L65 38 Q60 36.5 55 38 Z",
+};
+const feet = ()=> SHADOW(60,156,30) +
+  '<rect x="46" y="150" width="12" height="5" rx="2" fill="url(#gWoodSide)"/><rect x="62" y="150" width="12" height="5" rx="2" fill="url(#gWoodSide)"/>' +
+  '<rect x="46" y="149" width="12" height="3" rx="1.5" fill="url(#gWood)"/><rect x="62" y="149" width="12" height="3" rx="1.5" fill="url(#gWood)"/>' +
+  '<ellipse cx="52" cy="149" rx="4" ry="2" fill="url(#gSkin)"/><ellipse cx="68" cy="149" rx="4" ry="2" fill="url(#gSkin)"/>';
+const headBack = ()=> '<ellipse cx="60" cy="21" rx="11.5" ry="12" fill="url(#gHair)"/><circle cx="60" cy="8" r="6.2" fill="url(#gHair)"/><path d="M56 6 Q60 3 64 6" stroke="#5a4c47" stroke-width=".8" fill="none"/>' +
+  '<path d="M56 30 L64 30 L64.5 40 L55.5 40 Z" fill="url(#gSkinL)"/>';
+const face = ()=> '<ellipse cx="60" cy="23" rx="8.8" ry="10.3" fill="url(#gSkin)"/>' +
+  '<path d="M55 24.2 Q56.8 25.3 58.4 24.2 M61.6 24.2 Q63.2 25.3 65 24.2" stroke="#3a2a26" stroke-width=".8" fill="none" stroke-linecap="round"/>' +
+  '<path d="M54.8 21.6 Q56.6 20.8 58.3 21.4 M61.7 21.4 Q63.4 20.8 65.2 21.6" stroke="#4a3631" stroke-width=".55" fill="none"/>' +
+  '<ellipse cx="60" cy="29" rx="1.7" ry=".9" fill="#c9545f"/><circle cx="55.3" cy="27" r="1.8" fill="#f2a3a3" opacity=".35"/><circle cx="64.7" cy="27" r="1.8" fill="#f2a3a3" opacity=".35"/>' +
+  '<path d="M51.2 24 Q50.5 10 60 10 Q69.5 10 68.8 24 Q68 16.5 62.5 15 Q57.5 19.5 51.2 24 Z" fill="url(#gHair)"/>' +
+  '<circle cx="68.5" cy="9.5" r="2.4" fill="#e0525c"/><circle cx="68.5" cy="9.5" r=".9" fill="#f6d27a"/>';
+const hands = ()=> '<ellipse cx="44.5" cy="98" rx="3" ry="4" fill="url(#gSkin)"/><ellipse cx="75.5" cy="98" rx="3" ry="4" fill="url(#gSkin)"/>';
+const robe = ()=>
+  shaded(P.slvL,'url(#pYukata)') + `<path d="${P.slvL}" fill="url(#gShadeV)"/>` +
+  shaded(P.slvR,'url(#pYukata)') + `<path d="${P.slvR}" fill="url(#gShadeV)"/>` +
+  shaded(P.body,'url(#pYukata)') +
+  `<path d="${P.top}" fill="#000" opacity=".06"/>` +
+  `<path d="${P.neckV}" fill="url(#gSkinL)"/>` +
+  '<path d="M55 38 L61 61" stroke="#15204d" stroke-width="3.6" stroke-linecap="round"/>' +
+  '<path d="M65 38 Q63 50 60 61" stroke="#15204d" stroke-width="3.8" stroke-linecap="round" fill="none"/>' +
+  '<path d="M60 61 Q54 105 49 149" stroke="#101a40" stroke-width="1.3" fill="none"/>' +
+  '<path d="M43 99 L42 62 M77 99 L78 62" stroke="#101a40" stroke-width=".8" opacity=".6"/>';
+const band = (y,h,fill,stroke)=>`<path d="M40 ${y} Q60 ${y+3} 80 ${y} L80 ${y+h} Q60 ${y+h+3} 40 ${y+h} Z" fill="${fill}" ${stroke?`stroke="${stroke}" stroke-width=".8"`:''}/><path d="M40 ${y} Q60 ${y+3} 80 ${y} L80 ${y+h} Q60 ${y+h+3} 40 ${y+h} Z" fill="url(#gShine)"/>`;
+const ohashori = (y=100)=> band(y,10,'url(#pYukata)') + `<path d="M40 ${y+10} Q60 ${y+13} 80 ${y+10}" stroke="#0c1433" stroke-width="1.6" fill="none" opacity=".7"/>`;
+const datejime = (y=69)=> band(y,10,'url(#pHakata)');
+const obi = (y=73)=> band(y,19,'url(#gObi)') +
+  `<path d="M40 ${y+2.5} Q60 ${y+5.5} 80 ${y+2.5} M40 ${y+16.5} Q60 ${y+19.5} 80 ${y+16.5}" stroke="#f0c869" stroke-width="1" fill="none"/>`;
+const bowFront = (y=82)=> `<path d="M60 ${y} Q48 ${y-12} 41 ${y-8} Q39 ${y} 41 ${y+8} Q48 ${y+12} 60 ${y} Z" fill="url(#gObiWing)" stroke="#8e1d25" stroke-width=".6"/>` +
+  `<path d="M60 ${y} Q72 ${y-12} 79 ${y-8} Q81 ${y} 79 ${y+8} Q72 ${y+12} 60 ${y} Z" fill="url(#gObiWing)" stroke="#8e1d25" stroke-width=".6"/>` +
+  `<rect x="56" y="${y-6}" width="8" height="12" rx="2" fill="#b62a33"/><path d="M57 ${y+5} L55 ${y+20} L61 ${y+19} L62 ${y+5} Z" fill="url(#gObi)"/>`;
+const woman = (extra='', after='')=> feet() + headBack() + robe() + extra + hands() + face() + after;
+
+/* back view (for emon) */
+const womanBack = (after='')=> feet() +
+  shaded(P.slvL,'url(#pYukata)') + shaded(P.slvR,'url(#pYukata)') + shaded(P.body,'url(#pYukata)') +
+  '<path d="M60 44 L60 149" stroke="#101a40" stroke-width=".7" opacity=".5"/>' +
+  '<path d="M55 30 L65 30 L67 42 Q60 47 53 42 Z" fill="url(#gSkinL)"/>' +
+  '<path d="M49 41 Q60 50 71 41" stroke="#15204d" stroke-width="4" fill="none" stroke-linecap="round"/>' +
+  '<ellipse cx="60" cy="20" rx="11.5" ry="12.2" fill="url(#gHair)"/><circle cx="60" cy="9" r="6.5" fill="url(#gHair)"/>' +
+  '<path d="M52 27 Q60 31 68 27" stroke="#5a4c47" stroke-width=".7" fill="none"/><circle cx="66" cy="8" r="2.4" fill="#e0525c"/>' + after;
+
+/* underwear figure */
+const womanUnder = (after='')=> SHADOW(60,156,26) + '<ellipse cx="51.5" cy="151" rx="5" ry="2.4" fill="url(#gSkin)"/><ellipse cx="68.5" cy="151" rx="5" ry="2.4" fill="url(#gSkin)"/>' +
+  headBack() +
+  '<path d="M46 42 Q39 44 37 52 L35 94 Q37 98 40 96 L42 60 Z" fill="url(#gSkinL)"/><path d="M74 42 Q81 44 83 52 L85 94 Q83 98 80 96 L78 60 Z" fill="url(#gSkinL)"/>' +
+  '<path d="M46 41 Q60 38 74 41 L74 52 L46 52 Z" fill="url(#gSkinL)"/>' +
+  '<path d="M45 120 L47 150 L56 150 L58 120 Z" fill="url(#gSkinL)"/><path d="M62 120 L64 150 L73 150 L75 120 Z" fill="url(#gSkinL)"/>' +
+  shaded("M45 49 L49.5 41 L51.5 41 L52 47 Q60 50.5 68 47 L68.5 41 L70.5 41 L75 49 L77 102 L43 102 Z",'url(#gCloth)','stroke="#cfc9bd" stroke-width=".7"') +
+  shaded("M43 99 L77 99 L78 126 L62.5 126 L60 109 L57.5 126 L42 126 Z",'#f1efea','stroke="#cfc9bd" stroke-width=".7"') +
+  '<path d="M42 126 L57.5 126 M62.5 126 L78 126" stroke="#d9d3c6" stroke-width="1.6" stroke-dasharray="1.6 1.2"/>' +
+  '<ellipse cx="38" cy="97" rx="2.8" ry="3.6" fill="url(#gSkin)"/><ellipse cx="82" cy="97" rx="2.8" ry="3.6" fill="url(#gSkin)"/>' + face() + after;
+
+const ILL = {
+  yukata: SHADOW(60,114,40) + '<path d="M6 25 L114 25" stroke="#8a5a31" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="20" r="3" fill="none" stroke="#8a8f99" stroke-width="1.6"/><path d="M60 23 L60 25" stroke="#8a8f99" stroke-width="1.6"/>' +
+    shaded("M12 27 L108 27 L108 72 Q100 75 85 73 L85 112 L35 112 L35 73 Q20 75 12 72 Z",'url(#pYukata)') +
+    '<path d="M35 27 L35 73 M85 27 L85 73" stroke="#0e173b" stroke-width=".9" opacity=".7"/><path d="M60 30 L60 112" stroke="#0e173b" stroke-width=".7" opacity=".5"/>' +
+    '<path d="M48 27 Q60 35 72 27" stroke="#15204d" stroke-width="4" fill="none" stroke-linecap="round"/>',
+  underwear: SHADOW(32,104,22) + SHADOW(88,104,22) +
+    shaded("M14 34 L20 16 L23 16 L24 30 Q32 34 40 30 L41 16 L44 16 L50 34 L52 98 Q32 102 12 98 Z",'url(#gCloth)','stroke="#cbc5b8" stroke-width=".8"') +
+    '<path d="M12 98 Q16 102 20 98 Q24 102 28 98 Q32 102 36 98 Q40 102 44 98 Q48 102 52 98" stroke="#d4cdbf" stroke-width="1.2" fill="none"/>' +
+    shaded("M64 30 L112 30 L114 96 L93 96 L88 60 L83 96 L62 96 Z",'#f2f0eb','stroke="#cbc5b8" stroke-width=".8"') +
+    '<path d="M64 30 L112 30 L112 36 L64 36 Z" fill="#e7e3da"/><path d="M68 30 L68 36 M74 30 L74 36 M80 30 L80 36 M86 30 L86 36 M92 30 L92 36 M98 30 L98 36 M104 30 L104 36" stroke="#cfc8ba" stroke-width=".7"/>',
+  koshihimo: SHADOW(40,92,26) + SHADOW(82,96,24) +
+    [[40,62,20,12],[82,68,18,11]].map(([x,y,rx,ry])=>[0,1,2,3].map(i=>
+      `<ellipse cx="${x}" cy="${y+i*3}" rx="${rx-i*1.2}" ry="${ry-i*.6}" fill="none" stroke="url(#gPink)" stroke-width="4.5"/><ellipse cx="${x}" cy="${y+i*3-1}" rx="${rx-i*1.2}" ry="${ry-i*.6}" fill="none" stroke="#fbd9e3" stroke-width="1" opacity=".7"/>`).join('')).join('') +
+    '<path d="M58 72 Q64 92 70 100" stroke="url(#gPink)" stroke-width="4.5" fill="none" stroke-linecap="round"/>',
+  datejime: SHADOW(66,98,46) +
+    shaded("M32 40 L106 44 L106 76 L32 80 Z",'url(#pHakata)','stroke="#3c2c6c" stroke-width=".8"') +
+    '<circle cx="32" cy="60" r="20" fill="url(#pHakata)" stroke="#3c2c6c" stroke-width=".8"/><circle cx="32" cy="60" r="20" fill="url(#gShadeH)"/>' +
+    '<path d="M32 60 m-3 0 a3 3 0 1 1 6 0 a6 6 0 1 1 -12 0 a9 9 0 1 1 18 0 a12 12 0 1 1 -24 0 a15 15 0 1 1 30 0" fill="none" stroke="#3c2c6c" stroke-width=".9" opacity=".8"/>',
+  korin: SHADOW(60,82,48) +
+    '<path d="M22 60 C42 52 78 68 98 60" stroke="#c9c3b6" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M22 60 C42 52 78 68 98 60" stroke="#fbfaf7" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+    '<path d="M22 60 C42 52 78 68 98 60" stroke="#e7e2d8" stroke-width="1" stroke-dasharray="2 2" fill="none"/>' +
+    '<g transform="rotate(-10 14 60)"><rect x="4" y="50" width="18" height="20" rx="4" fill="url(#gPink)" stroke="#c2617f" stroke-width=".8"/><path d="M8 54 L18 54 M8 58 L18 58 M8 62 L18 62 M8 66 L18 66" stroke="#c2617f" stroke-width=".9"/></g>' +
+    '<g transform="rotate(10 106 60)"><rect x="98" y="50" width="18" height="20" rx="4" fill="url(#gPink)" stroke="#c2617f" stroke-width=".8"/><path d="M102 54 L112 54 M102 58 L112 58 M102 62 L112 62 M102 66 L112 66" stroke="#c2617f" stroke-width=".9"/></g>',
+  obi: SHADOW(60,104,48) +
+    '<path d="M6 64 L114 60 L114 80 L6 84 Z" fill="url(#gObi)"/><path d="M6 67 L114 63 M6 81 L114 77" stroke="#f0c869" stroke-width="1"/>' +
+    '<path d="M60 72 Q40 50 22 54 Q16 72 22 92 Q40 94 60 72 Z" fill="url(#gObiWing)" stroke="#8e1d25" stroke-width=".7"/>' +
+    '<path d="M60 72 Q80 50 98 54 Q104 72 98 92 Q80 94 60 72 Z" fill="url(#gObiWing)" stroke="#8e1d25" stroke-width=".7"/>' +
+    '<path d="M30 60 Q42 66 54 70 M30 86 Q42 80 54 74 M90 60 Q78 66 66 70 M90 86 Q78 80 66 74" stroke="#9f222b" stroke-width=".8" fill="none" opacity=".7"/>' +
+    '<path d="M55 80 L50 108 L62 106 L64 80 Z" fill="url(#gObi)" stroke="#8e1d25" stroke-width=".6"/>' +
+    '<rect x="53" y="59" width="14" height="25" rx="3.5" fill="#b42832" stroke="#8e1d25" stroke-width=".6"/><path d="M55 63 Q60 71 65 63" stroke="#e65a5c" stroke-width="1" fill="none"/>',
+  obiita: SHADOW(60,90,46) +
+    '<rect x="14" y="38" width="92" height="44" rx="14" fill="url(#pMesh)" stroke="#9b89c4" stroke-width="1.2"/><rect x="14" y="38" width="92" height="44" rx="14" fill="url(#gShine)"/>' +
+    '<rect x="19" y="43" width="82" height="34" rx="10" fill="none" stroke="#a796cf" stroke-width="1" stroke-dasharray="2 1.5"/>',
+  geta: SHADOW(60,112,44) +
+    [[40,-6],[80,6]].map(([x,r])=>`<g transform="rotate(${r} ${x} 62)">
+      <rect x="${x-14}" y="17" width="28" height="92" rx="13" fill="url(#gWoodSide)"/>
+      <rect x="${x-14}" y="14" width="28" height="91" rx="13" fill="url(#gWood)"/>
+      <path d="M${x-8} 24 Q${x-6} 60 ${x-9} 98 M${x-2} 20 Q${x} 60 ${x-2} 102 M${x+6} 22 Q${x+8} 60 ${x+5} 100" stroke="#c49460" stroke-width=".6" fill="none" opacity=".8"/>
+      <path d="M${x} 28 Q${x-12} 52 ${x-12} 72" stroke="#7e1520" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M${x} 28 Q${x+12} 52 ${x+12} 72" stroke="#7e1520" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M${x} 28 Q${x-12} 52 ${x-12} 72" stroke="#c43344" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M${x} 28 Q${x+12} 52 ${x+12} 72" stroke="#c43344" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="${x}" cy="28" r="3" fill="#a82332"/></g>`).join(''),
+  bag: SHADOW(60,108,30) +
+    '<path d="M46 50 Q46 22 60 19 Q74 22 74 50" stroke="#a82332" stroke-width="2.6" fill="none"/>' +
+    '<path d="M33 52 Q27 104 60 106 Q93 104 87 52 Z" fill="url(#pChirimen)"/><path d="M33 52 Q27 104 60 106 Q93 104 87 52 Z" fill="url(#gShadeH)"/><path d="M33 52 Q27 104 60 106 Q93 104 87 52 Z" fill="url(#gShadeV)" opacity=".6"/>' +
+    '<path d="M38 60 Q36 80 42 96 M50 58 Q48 82 52 102 M70 58 Q72 82 68 102 M82 60 Q84 80 78 96" stroke="#b9607c" stroke-width=".7" fill="none" opacity=".7"/>' +
+    '<path d="M33 52 Q35 40 42 44 Q46 33 52 40 Q56 31 60 38 Q64 31 68 40 Q74 33 78 44 Q85 40 87 52 Q60 58 33 52 Z" fill="url(#pChirimen)"/><path d="M33 52 Q35 40 42 44 Q46 33 52 40 Q56 31 60 38 Q64 31 68 40 Q74 33 78 44 Q85 40 87 52 Q60 58 33 52 Z" fill="url(#gShine)"/>' +
+    '<path d="M33 52 Q60 58 87 52" stroke="#a82332" stroke-width="2" fill="none"/><circle cx="52" cy="62" r="2.2" fill="#a82332"/><circle cx="68" cy="62" r="2.2" fill="#a82332"/>',
+};
+
+const STEP_ILL = [
+  /* 1 underwear */ womanUnder(),
+  /* 2 robe on, hem length */ woman('', `<path d="M60 44 L60 148" stroke="#d6283a" stroke-width="1.2" stroke-dasharray="3 3" opacity=".8"/><path d="M14 157 L106 157" stroke="#8a8f99" stroke-width="1"/><path d="M100 138 L100 154" ${RED}${AR}/>`),
+  /* 3 left over right */ woman(`<path d="${P.top}" fill="#fff" opacity=".16"/><path d="M65 38 Q63 50 60 61 Q54 105 49 149" stroke="#d6283a" stroke-width="1.6" stroke-dasharray="3 2" fill="none"/>`, `<path d="M88 122 L58 128" ${RED}${AR}/>`),
+  /* 4 first koshihimo */ woman('<path d="M40 108 Q60 111.5 80 108" stroke="#e98aa7" stroke-width="2.6" fill="none"/>', `<path d="M104 109 L86 109" ${RED}${AR}/>`),
+  /* 5 ohashori */ woman(ohashori(100), `<path d="M86 100 L90 100 L90 113 L86 113" ${RED}/><path d="M70 84 L70 97" ${RED}${AR}/>`),
+  /* 6 collar V + emon (back) */ womanBack(`<path d="M60 53 L60 63" ${RED}${AR}/>`),
+  /* 7 datejime under bust */ woman(ohashori(100) + datejime(69), `<path d="M104 74 L86 74" ${RED}${AR}/>`),
+  /* 8 obi, turn to the wearer's right */ woman(ohashori(100) + obi(75) + bowFront(85), `<path d="M52 112 Q30 124 20 102" ${RED}${AR}/>`),
+];
+
+const TIP_ILL = [
+  /* small steps, toes slightly inward */ SHADOW(60,150,40) +
+    [[42,82,8],[78,62,-8]].map(([x,y,r])=>`<g transform="rotate(${r} ${x} ${y+30})">
+      <rect x="${x-11}" y="${y+2}" width="22" height="66" rx="10" fill="url(#gWoodSide)"/><rect x="${x-11}" y="${y}" width="22" height="65" rx="10" fill="url(#gWood)"/>
+      <path d="M${x-9} ${y+26} Q${x-10} ${y+6} ${x} ${y+4} Q${x+10} ${y+6} ${x+9} ${y+26} Q${x+8} ${y+50} ${x} ${y+56} Q${x-8} ${y+50} ${x-9} ${y+26} Z" fill="url(#gSkin)"/>
+      <path d="M${x} ${y+14} Q${x-9} ${y+26} ${x-9} ${y+38} M${x} ${y+14} Q${x+9} ${y+26} ${x+9} ${y+38}" stroke="#c43344" stroke-width="3" fill="none" stroke-linecap="round"/></g>`).join('') +
+    `<path d="M106 112 L106 94" ${RED}${AR}/><path d="M106 94 L106 112" ${RED}${AR}/>`,
+  /* pull the under-collar tip from beneath the ohashori */ woman(ohashori(100) + obi(75), `<ellipse cx="47" cy="114" rx="3.4" ry="4" fill="url(#gSkin)"/><path d="M38 110 L38 128" ${RED}${AR}/>`),
+  /* lift the hem on stairs */ (
+    '<path d="M0 160 L0 132 L72 132 L72 108 L120 108 L120 160 Z" fill="url(#gStair)"/>' +
+    '<path d="M0 132 L72 132 L72 108 L120 108" stroke="#9c7b4c" stroke-width="1.4" fill="none"/>' +
+    SHADOW(48,131,22) +
+    '<path d="M37 98 L38 126 L45 126 L45 98 Z" fill="url(#gSkinL)"/><path d="M51 98 L51 126 L58 126 L59 98 Z" fill="url(#gSkinL)"/>' +
+    '<rect x="35" y="125" width="12" height="4" rx="1.5" fill="url(#gWood)"/><rect x="35" y="129" width="12" height="3" rx="1" fill="url(#gWoodSide)"/>' +
+    '<rect x="49" y="125" width="12" height="4" rx="1.5" fill="url(#gWood)"/><rect x="49" y="129" width="12" height="3" rx="1" fill="url(#gWoodSide)"/>' +
+    shaded("M30 4 L66 4 L68 60 Q70 68 72 74 Q66 88 62 100 L33 104 Q31 50 30 4 Z",'url(#pYukata)') +
+    '<path d="M62 100 Q66 88 72 74" stroke="#101a40" stroke-width="1.2" fill="none"/>' +
+    '<ellipse cx="71" cy="70" rx="4.5" ry="5" fill="url(#gSkin)"/>' +
+    `<path d="M96 100 L96 64" ${RED}${AR}/>`),
+];
+
+let showJa = store.get("yk-ja",false);
+
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function jaLine(text){ return (lang!=="ja") ? `<span class="ja" ${showJa?"":"hidden"}>${esc(text)}</span>` : ""; }
+
+function renderLangs(){
+  $("#langs").innerHTML = ORDER.map(k=>`<button class="chip" data-lang="${k}" aria-pressed="${k===lang}" aria-label="${esc(DATA[k].langName)} ${JA_NAMES[k]}">${k==="ja"
+    ? `<ruby>${esc(DATA[k].langName)}<rt>にほんご</rt></ruby>`
+    : `<ruby><span lang="${k==="yue"?"zh-HK":k}">${esc(DATA[k].langName)}</span><rt lang="ja">${JA_NAMES[k]}</rt></ruby>`}</button>`).join("");
+}
+
+function setFont(){
+  const f = FONTS[lang];
+  const root = document.documentElement;
+  if(f){ $("#scriptFont").href = `https://fonts.googleapis.com/css2?family=${f[1]}&display=swap`; root.style.setProperty("--f-script",`"${f[0]}"`); }
+  else { root.style.removeProperty("--f-script"); }
+  if(["zh","yue","ko","th","ar"].includes(lang)) root.setAttribute("data-script",lang); else root.removeAttribute("data-script");
+}
+
+function render(){
+  const d = DATA[lang], J = DATA.ja, u = d.ui;
+  const content = $("#content");
+  content.dir = d.dir; $("#title").dir = d.dir; $("#subtitle").dir = d.dir;
+  content.lang = lang==="yue"?"zh-HK":lang;
+  document.documentElement.lang = content.lang;
+  $("#title").innerHTML = esc(u.appTitle) + (lang!=="ja" ? `<span class="ja-under">${esc(J.ui.appTitle)}</span>` : "");
+  $("#subtitle").textContent = u.subtitle;
+  ["items","steps","tips"].forEach(t=>{
+    const b=$("#tab-"+t);
+    b.textContent = u["tab"+t[0].toUpperCase()+t.slice(1)];
+    b.setAttribute("aria-selected", t===tab);
+  });
+  $("#jaToggleWrap").hidden = (lang==="ja");
+  $("#jaToggle").checked = showJa;
+
+  if(tab==="items"){
+    content.innerHTML = `
+      <h2 style="margin-bottom:14px">${esc(u.itemsHeading)}</h2>
+      <ul class="items">${d.items.map((it,i)=>`
+        <li class="item">
+          <div class="fig">${SQ(ILL[it.id]||"")}</div>
+          <div>
+            <div class="name">${esc(it.name)}${it.optional?`<span class="tag">${esc(u.optional)}</span>`:""}</div>
+            ${jaLine(J.items[i].name)}
+            <p class="desc">${esc(it.desc)}</p>
+            ${jaLine(J.items[i].desc)}
+          </div>
+        </li>`).join("")}</ul>
+      <p class="note">${esc(u.menNote)}${jaLine(J.ui.menNote)}</p>`;
+  } else if(tab==="steps"){
+    content.innerHTML = `
+      <h2 style="margin-bottom:18px">${esc(u.stepsHeading)}</h2>
+      <ol class="steps">${d.steps.map((s,i)=>`
+        <li class="step"><div class="figwrap"><span class="num" aria-hidden="true">${i+1}</span><div class="fig tall">${TALL(STEP_ILL[i])}</div></div>
+          <div>
+            <h3>${esc(s.title)}</h3>${jaLine(J.steps[i].title)}
+            <p>${esc(s.desc)}</p>${jaLine(J.steps[i].desc)}
+            ${s.warn?`<div class="warn" role="note"><b>!</b> ${esc(s.warn)}${jaLine(J.steps[i].warn)}</div>`:""}
+          </div>
+        </li>`).join("")}</ol>`;
+  } else {
+    content.innerHTML = `
+      <h2 style="margin-bottom:14px">${esc(u.tipsHeading)}</h2>
+      <ul class="tipcards">${d.tips.map((t,i)=>`<li><div class="fig tall">${TALL(TIP_ILL[i])}</div><div>${esc(t)}${jaLine(J.tips[i])}</div></li>`).join("")}</ul>`;
+  }
+}
+
+$("#langs").addEventListener("click",e=>{
+  const b=e.target.closest("[data-lang]"); if(!b) return;
+  lang=b.dataset.lang; store.set("yk-lang",lang);
+  try{history.replaceState(null,"","#"+lang)}catch(_){}
+  renderLangs(); setFont(); render();
+});
+$("#tabs").addEventListener("click",e=>{
+  const b=e.target.closest("[data-tab]"); if(!b) return;
+  tab=b.dataset.tab; store.set("yk-tab",tab); render();
+});
+$("#jaToggle").addEventListener("change",e=>{ showJa=e.target.checked; store.set("yk-ja",showJa); render(); });
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1); if(h in DATA && h!==lang){lang=h;renderLangs();setFont();render();}});
+
+renderLangs(); setFont(); render();
+</script>
+
+</body>
+</html>
